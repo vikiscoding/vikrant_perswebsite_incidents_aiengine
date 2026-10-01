@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-10-01T04:30:57+00:00",
+  "generated_at": "2026-10-01T04:31:46+00:00",
   "repo": "vikiscoding/vikrant_perswebsite_incidents_aiengine",
   "incidents": [
     {
       "id": "inc-b477a482935e",
       "title": "manual test: bridge smoke test (not a real outage)",
-      "state": "TRIAGING",
+      "state": "ACTIVE",
       "priority": null,
       "created_at": "2026-10-01T04:30:55+00:00",
-      "updated_at": "2026-10-01T04:30:55+00:00",
+      "updated_at": "2026-10-01T04:31:44+00:00",
       "triage": null,
       "gate": "model unavailable; human triage",
       "drafts_unsent": 0,
@@ -75,6 +75,18 @@
           "kind": "ai",
           "event": "detection_gaps_failed",
           "to": null
+        },
+        {
+          "at": "2026-10-01T04:31:44+00:00",
+          "kind": "human",
+          "event": "state_transition",
+          "to": "ACKNOWLEDGED"
+        },
+        {
+          "at": "2026-10-01T04:31:44+00:00",
+          "kind": "human",
+          "event": "state_transition",
+          "to": "ACTIVE"
         }
       ]
     }

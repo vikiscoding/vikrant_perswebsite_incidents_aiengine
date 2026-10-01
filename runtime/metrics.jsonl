@@ -9,3 +9,5 @@
 {"incident_id": "inc-b477a482935e", "metric": "ai_call_error", "value": 1, "labels": {"purpose": "comms_status_internal"}, "timestamp": "2026-10-01T04:30:55.829943+00:00", "actor": "ai:grok:grok-4.5"}
 {"incident_id": "inc-b477a482935e", "metric": "ai_call_latency_ms", "value": 0, "labels": {"purpose": "detection_gaps_triage"}, "timestamp": "2026-10-01T04:30:55.843870+00:00", "actor": "ai:grok:grok-4.5"}
 {"incident_id": "inc-b477a482935e", "metric": "ai_call_error", "value": 1, "labels": {"purpose": "detection_gaps_triage"}, "timestamp": "2026-10-01T04:30:55.850771+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-b477a482935e", "metric": "state_dwell_ms", "value": 49091, "labels": {"state": "TRIAGING"}, "timestamp": "2026-10-01T04:31:44.874204+00:00", "actor": "human:vikiscoding"}
+{"incident_id": "inc-b477a482935e", "metric": "state_dwell_ms", "value": 8, "labels": {"state": "ACKNOWLEDGED"}, "timestamp": "2026-10-01T04:31:44.881933+00:00", "actor": "human:vikiscoding"}
