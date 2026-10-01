@@ -118,3 +118,17 @@ def test_unknown_command_returns_help(env):
 def test_bad_alert_payload_rejected(bad):
     with pytest.raises(ValueError):
         bridge.parse_alert(bad)
+
+
+def test_gate_label_marks_pre_policy_auto_apply_as_history():
+    """A pre-ADR-021 auto-apply reads as history; one after the rule would be shown as a breach, never as normal."""
+    from datetime import timedelta
+    from types import SimpleNamespace
+
+    def inc(at):
+        return SimpleNamespace(timeline=[SimpleNamespace(event_type="triage_applied", approved_by=None, timestamp=at)])
+
+    before = bridge.gate_label(inc(bridge.NO_AUTO_APPLY_SINCE - timedelta(hours=12)))
+    after = bridge.gate_label(inc(bridge.NO_AUTO_APPLY_SINCE + timedelta(minutes=1)))
+    assert "earlier low-risk rule" in before and "now waits for /approve" in before
+    assert "against the live-desk rule" in after

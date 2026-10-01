@@ -31,6 +31,9 @@ OWNER = "vikiscoding"
 HUMAN_ACTOR = f"human:{OWNER}"
 OPEN_STATES = {"DETECTED", "TRIAGING", "ACKNOWLEDGED", "ACTIVE"}
 FEED_LIMIT = 20
+# ADR-021 (site repo): from this commit on, the live desk runs with TRIAGE_AUTO_APPLY=off. An auto-apply before it is
+# history and is labelled as such; one after it would be a breach of the rule, and the label says so.
+NO_AUTO_APPLY_SINCE = datetime(2026, 10, 1, 17, 2, 5, tzinfo=timezone.utc)
 
 HELP = """Commands (repo owner only, first line of a comment):
   /approve                  accept the AI's proposed triage
@@ -273,14 +276,20 @@ def cmd_guard(store: Store, root: Path, issue: str) -> int:
 
 # ---------------------------------------------------------------- feed
 
+def _auto_applied(at: datetime) -> str:
+    if at < NO_AUTO_APPLY_SINCE:
+        return "auto-applied under the earlier low-risk rule (before 1 Oct 2026); AI priority now waits for /approve"
+    return "auto-applied, against the live-desk rule (ADR-021)"
+
+
 def gate_label(incident) -> str:
     for event in reversed(incident.timeline):
         if event.event_type == "triage_rejected":
             return "rejected by human"
         if event.event_type == "triage_applied":
-            return "approved by human" if event.approved_by else "auto-applied (low risk, high confidence)"
+            return "approved by human" if event.approved_by else _auto_applied(event.timestamp)
         if event.event_type == "ai_triage_proposed":
-            return "awaiting human" if event.requires_approval else "auto-applied (low risk, high confidence)"
+            return "awaiting human" if event.requires_approval else _auto_applied(event.timestamp)
         if event.event_type == "triage_failed":
             return "model unavailable; human triage"
     return "not triaged"
