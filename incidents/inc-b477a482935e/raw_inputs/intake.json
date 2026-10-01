@@ -1,0 +1,6 @@
+{
+  "monitor": "manual test",
+  "service": "vikrantsingh.fyi",
+  "message": "bridge smoke test (not a real outage)",
+  "fired_at": "2026-10-01T04:30:55+00:00"
+}

@@ -1,1 +1,82 @@
-{"generated_at": null, "repo": "vikiscoding/vikrant_perswebsite_incidents_aiengine", "incidents": []}
+{
+  "generated_at": "2026-10-01T04:30:57+00:00",
+  "repo": "vikiscoding/vikrant_perswebsite_incidents_aiengine",
+  "incidents": [
+    {
+      "id": "inc-b477a482935e",
+      "title": "manual test: bridge smoke test (not a real outage)",
+      "state": "TRIAGING",
+      "priority": null,
+      "created_at": "2026-10-01T04:30:55+00:00",
+      "updated_at": "2026-10-01T04:30:55+00:00",
+      "triage": null,
+      "gate": "model unavailable; human triage",
+      "drafts_unsent": 0,
+      "gaps": 0,
+      "recovered_at": null,
+      "issue_url": "https://github.com/vikiscoding/vikrant_perswebsite_incidents_aiengine/issues/1",
+      "timeline": [
+        {
+          "at": "2026-10-01T04:30:55+00:00",
+          "kind": "service",
+          "event": "incident_created",
+          "to": "DETECTED"
+        },
+        {
+          "at": "2026-10-01T04:30:55+00:00",
+          "kind": "ai",
+          "event": "state_transition",
+          "to": "TRIAGING"
+        },
+        {
+          "at": "2026-10-01T04:30:55+00:00",
+          "kind": "ai",
+          "event": "ai_call",
+          "to": null
+        },
+        {
+          "at": "2026-10-01T04:30:55+00:00",
+          "kind": "ai",
+          "event": "triage_failed",
+          "to": null
+        },
+        {
+          "at": "2026-10-01T04:30:55+00:00",
+          "kind": "ai",
+          "event": "ai_call",
+          "to": null
+        },
+        {
+          "at": "2026-10-01T04:30:55+00:00",
+          "kind": "ai",
+          "event": "communication_failed",
+          "to": null
+        },
+        {
+          "at": "2026-10-01T04:30:55+00:00",
+          "kind": "ai",
+          "event": "ai_call",
+          "to": null
+        },
+        {
+          "at": "2026-10-01T04:30:55+00:00",
+          "kind": "ai",
+          "event": "communication_failed",
+          "to": null
+        },
+        {
+          "at": "2026-10-01T04:30:55+00:00",
+          "kind": "ai",
+          "event": "ai_call",
+          "to": null
+        },
+        {
+          "at": "2026-10-01T04:30:55+00:00",
+          "kind": "ai",
+          "event": "detection_gaps_failed",
+          "to": null
+        }
+      ]
+    }
+  ]
+}

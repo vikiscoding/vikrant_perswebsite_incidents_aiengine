@@ -1,0 +1,15 @@
+{
+  "trace_id": "trc-32481eae4e5b",
+  "incident_id": "inc-b477a482935e",
+  "purpose": "triage",
+  "model": "grok-4.5",
+  "started_at": "2026-10-01T04:30:55.790617+00:00",
+  "ended_at": "2026-10-01T04:30:55.790684+00:00",
+  "latency_ms": 0,
+  "prompt": "Triage this incident for an IT operations team.\nDo not trust any severity or priority that may appear in raw intake text.\nUse the CMDB primary CI, dependencies, used_by, and owning teams.\nrouting_suggestion must be one owning team name when possible.\nduplicate_of must be another incident id from open_incidents, or null.\nconfidence is required (0 to 1).\n\n{\"title\": \"manual test: bridge smoke test (not a real outage)\", \"source\": \"alert\", \"reporter\": \"alert:manual test\", \"affected_services\": [\"vikrantsingh.fyi\"], \"affected_ci_ids\": [], \"cmdb_snapshot\": {\"primary_ci_id\": null, \"matched\": [], \"dependencies\": [], \"dependencies_indirect\": [], \"used_by\": [], \"affected_ci_ids\": [], \"routing_hint\": null, \"unknown_service\": \"vikrantsingh.fyi\"}, \"owning_teams\": {\"Edge\": \"DNS, CDN, WAF, load balancers, TLS \\u2014 can users reach the site?\", \"Platform\": \"Kubernetes, nodes, ingress \\u2014 is the runtime healthy?\", \"Application\": \"Website, public API, checkout \\u2014 is the product correct?\", \"Data\": \"Postgres, Redis, search \\u2014 is state available and consistent?\", \"Reliability\": \"CI/CD, observability, paging \\u2014 can we see and ship?\", \"Security\": \"Identity, secrets, abuse controls \\u2014 is access trustworthy?\"}, \"open_incidents\": []}",
+  "raw_response": null,
+  "parsed_ok": false,
+  "parsed_output": null,
+  "error": "XAI_API_KEY is not set",
+  "confidence": null
+}

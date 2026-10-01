@@ -1,0 +1,15 @@
+{
+  "trace_id": "trc-a27fa57d166e",
+  "incident_id": "inc-b477a482935e",
+  "purpose": "comms_ack_customers",
+  "model": "grok-4.5",
+  "started_at": "2026-10-01T04:30:55.807638+00:00",
+  "ended_at": "2026-10-01T04:30:55.807708+00:00",
+  "latency_ms": 0,
+  "prompt": "Write the initial acknowledgment. Confirm we are aware, say what is affected, and set a cautious expectation. Do not promise a fix time you cannot know.\naudience=customers. tone=plain language, calm, no internal CI ids unless needed.\nReturn a CommunicationDraft. channel should be slack for internal, status_page for customers, email for leadership.\nconfidence is required (0 to 1). This is a draft only; it will not be sent.\n\n{\"kind\": \"ack\", \"audience\": \"customers\", \"title\": \"manual test: bridge smoke test (not a real outage)\", \"state\": \"TRIAGING\", \"priority\": null, \"impact_score\": null, \"affected_services\": [\"vikrantsingh.fyi\"], \"affected_ci_ids\": [], \"routing\": null, \"triage_reasoning\": null}",
+  "raw_response": null,
+  "parsed_ok": false,
+  "parsed_output": null,
+  "error": "XAI_API_KEY is not set",
+  "confidence": null
+}

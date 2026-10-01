@@ -1,0 +1,11 @@
+{"incident_id": "inc-b477a482935e", "metric": "create_latency_ms", "value": 2, "labels": {}, "timestamp": "2026-10-01T04:30:55.737838+00:00", "actor": "service:vikrantsingh.fyi-heartbeat"}
+{"incident_id": "inc-b477a482935e", "metric": "state_dwell_ms", "value": 46, "labels": {"state": "DETECTED"}, "timestamp": "2026-10-01T04:30:55.782810+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-b477a482935e", "metric": "time_to_triage_ms", "value": 46, "labels": {}, "timestamp": "2026-10-01T04:30:55.786239+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-b477a482935e", "metric": "ai_call_latency_ms", "value": 0, "labels": {"purpose": "triage"}, "timestamp": "2026-10-01T04:30:55.790919+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-b477a482935e", "metric": "ai_call_error", "value": 1, "labels": {"purpose": "triage"}, "timestamp": "2026-10-01T04:30:55.794635+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-b477a482935e", "metric": "ai_call_latency_ms", "value": 0, "labels": {"purpose": "comms_ack_customers"}, "timestamp": "2026-10-01T04:30:55.807901+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-b477a482935e", "metric": "ai_call_error", "value": 1, "labels": {"purpose": "comms_ack_customers"}, "timestamp": "2026-10-01T04:30:55.812181+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-b477a482935e", "metric": "ai_call_latency_ms", "value": 0, "labels": {"purpose": "comms_status_internal"}, "timestamp": "2026-10-01T04:30:55.825795+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-b477a482935e", "metric": "ai_call_error", "value": 1, "labels": {"purpose": "comms_status_internal"}, "timestamp": "2026-10-01T04:30:55.829943+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-b477a482935e", "metric": "ai_call_latency_ms", "value": 0, "labels": {"purpose": "detection_gaps_triage"}, "timestamp": "2026-10-01T04:30:55.843870+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-b477a482935e", "metric": "ai_call_error", "value": 1, "labels": {"purpose": "detection_gaps_triage"}, "timestamp": "2026-10-01T04:30:55.850771+00:00", "actor": "ai:grok:grok-4.5"}

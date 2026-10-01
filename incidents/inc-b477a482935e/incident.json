@@ -1,0 +1,462 @@
+{
+  "id": "inc-b477a482935e",
+  "title": "manual test: bridge smoke test (not a real outage)",
+  "current_state": "TRIAGING",
+  "created_at": "2026-10-01T04:30:55.735027Z",
+  "updated_at": "2026-10-01T04:30:55.858749Z",
+  "priority": null,
+  "impact_score": null,
+  "reporter": "alert:manual test",
+  "source": "alert",
+  "affected_services": [
+    "vikrantsingh.fyi"
+  ],
+  "affected_ci_ids": [],
+  "cmdb_snapshot": {
+    "primary_ci_id": null,
+    "matched": [],
+    "dependencies": [],
+    "dependencies_indirect": [],
+    "used_by": [],
+    "affected_ci_ids": [],
+    "routing_hint": null,
+    "unknown_service": "vikrantsingh.fyi"
+  },
+  "related_incidents": [],
+  "recent_changes": [],
+  "timeline": [
+    {
+      "id": "evt-f9d98ffb0acd",
+      "timestamp": "2026-10-01T04:30:55.735027Z",
+      "actor": "service:vikrantsingh.fyi-heartbeat",
+      "event_type": "incident_created",
+      "from_state": null,
+      "to_state": "DETECTED",
+      "reasoning": "incident created from alert",
+      "confidence": null,
+      "artifacts": [
+        "raw_inputs/intake.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "id": "inc-b477a482935e",
+        "title": "manual test: bridge smoke test (not a real outage)",
+        "current_state": "DETECTED",
+        "created_at": "2026-10-01T04:30:55.735027Z",
+        "updated_at": "2026-10-01T04:30:55.735027Z",
+        "priority": null,
+        "impact_score": null,
+        "reporter": "alert:manual test",
+        "source": "alert",
+        "affected_services": [
+          "vikrantsingh.fyi"
+        ],
+        "affected_ci_ids": [],
+        "cmdb_snapshot": {
+          "primary_ci_id": null,
+          "matched": [],
+          "dependencies": [],
+          "dependencies_indirect": [],
+          "used_by": [],
+          "affected_ci_ids": [],
+          "routing_hint": null,
+          "unknown_service": "vikrantsingh.fyi"
+        },
+        "related_incidents": [],
+        "recent_changes": [],
+        "timeline": [],
+        "communications": [],
+        "detection_gaps": [],
+        "ai_triage": null,
+        "resolution_notes": null,
+        "postmortem_draft": null,
+        "assigned_to": null,
+        "support_group": null
+      }
+    },
+    {
+      "id": "evt-0e798d04d66d",
+      "timestamp": "2026-10-01T04:30:55.737838Z",
+      "actor": "service:vikrantsingh.fyi-heartbeat",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric create_latency_ms=2",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "create_latency_ms",
+        "value": 2,
+        "labels": {}
+      }
+    },
+    {
+      "id": "evt-1472d7e5e392",
+      "timestamp": "2026-10-01T04:30:55.781150Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "state_transition",
+      "from_state": "DETECTED",
+      "to_state": "TRIAGING",
+      "reasoning": "begin AI triage",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": null
+    },
+    {
+      "id": "evt-2079b589c9c2",
+      "timestamp": "2026-10-01T04:30:55.782810Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric state_dwell_ms=46",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "state_dwell_ms",
+        "value": 46,
+        "labels": {
+          "state": "DETECTED"
+        }
+      }
+    },
+    {
+      "id": "evt-5b07dde5fcab",
+      "timestamp": "2026-10-01T04:30:55.786239Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric time_to_triage_ms=46",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "time_to_triage_ms",
+        "value": 46,
+        "labels": {}
+      }
+    },
+    {
+      "id": "evt-54328e1048b1",
+      "timestamp": "2026-10-01T04:30:55.790919Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_latency_ms=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_latency_ms",
+        "value": 0,
+        "labels": {
+          "purpose": "triage"
+        }
+      }
+    },
+    {
+      "id": "evt-7d86c7a87c87",
+      "timestamp": "2026-10-01T04:30:55.794635Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_error=1",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_error",
+        "value": 1,
+        "labels": {
+          "purpose": "triage"
+        }
+      }
+    },
+    {
+      "id": "evt-f2dd44027340",
+      "timestamp": "2026-10-01T04:30:55.798235Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_call",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "triage",
+      "confidence": null,
+      "artifacts": [
+        "ai_traces/trc-32481eae4e5b.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "parsed_ok": false,
+        "error": "XAI_API_KEY is not set",
+        "trace_id": "trc-32481eae4e5b"
+      }
+    },
+    {
+      "id": "evt-c18515c194a8",
+      "timestamp": "2026-10-01T04:30:55.802435Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "triage_failed",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "XAI_API_KEY is not set",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "error": "XAI_API_KEY is not set"
+      }
+    },
+    {
+      "id": "evt-8b88b03538c6",
+      "timestamp": "2026-10-01T04:30:55.807901Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_latency_ms=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_latency_ms",
+        "value": 0,
+        "labels": {
+          "purpose": "comms_ack_customers"
+        }
+      }
+    },
+    {
+      "id": "evt-ea95f306afc5",
+      "timestamp": "2026-10-01T04:30:55.812181Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_error=1",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_error",
+        "value": 1,
+        "labels": {
+          "purpose": "comms_ack_customers"
+        }
+      }
+    },
+    {
+      "id": "evt-8cb119e633ba",
+      "timestamp": "2026-10-01T04:30:55.816296Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_call",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "comms_ack_customers",
+      "confidence": null,
+      "artifacts": [
+        "ai_traces/trc-a27fa57d166e.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "parsed_ok": false,
+        "error": "XAI_API_KEY is not set",
+        "trace_id": "trc-a27fa57d166e"
+      }
+    },
+    {
+      "id": "evt-9b08edac5c62",
+      "timestamp": "2026-10-01T04:30:55.820475Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "communication_failed",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "XAI_API_KEY is not set",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "kind": "ack",
+        "error": "XAI_API_KEY is not set"
+      }
+    },
+    {
+      "id": "evt-4e6da80c7182",
+      "timestamp": "2026-10-01T04:30:55.825795Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_latency_ms=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_latency_ms",
+        "value": 0,
+        "labels": {
+          "purpose": "comms_status_internal"
+        }
+      }
+    },
+    {
+      "id": "evt-7086eef0bd34",
+      "timestamp": "2026-10-01T04:30:55.829943Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_error=1",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_error",
+        "value": 1,
+        "labels": {
+          "purpose": "comms_status_internal"
+        }
+      }
+    },
+    {
+      "id": "evt-7c83fbd149db",
+      "timestamp": "2026-10-01T04:30:55.833982Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_call",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "comms_status_internal",
+      "confidence": null,
+      "artifacts": [
+        "ai_traces/trc-bbb3d5a1edb6.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "parsed_ok": false,
+        "error": "XAI_API_KEY is not set",
+        "trace_id": "trc-bbb3d5a1edb6"
+      }
+    },
+    {
+      "id": "evt-21cae727568d",
+      "timestamp": "2026-10-01T04:30:55.838302Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "communication_failed",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "XAI_API_KEY is not set",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "kind": "status",
+        "error": "XAI_API_KEY is not set"
+      }
+    },
+    {
+      "id": "evt-a270bdf68c02",
+      "timestamp": "2026-10-01T04:30:55.843870Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_latency_ms=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_latency_ms",
+        "value": 0,
+        "labels": {
+          "purpose": "detection_gaps_triage"
+        }
+      }
+    },
+    {
+      "id": "evt-cae0bcf27fa0",
+      "timestamp": "2026-10-01T04:30:55.850771Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_error=1",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_error",
+        "value": 1,
+        "labels": {
+          "purpose": "detection_gaps_triage"
+        }
+      }
+    },
+    {
+      "id": "evt-00e3cebeae27",
+      "timestamp": "2026-10-01T04:30:55.854753Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_call",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "detection_gaps_triage",
+      "confidence": null,
+      "artifacts": [
+        "ai_traces/trc-06ce15d5e9b4.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "parsed_ok": false,
+        "error": "XAI_API_KEY is not set",
+        "trace_id": "trc-06ce15d5e9b4"
+      }
+    },
+    {
+      "id": "evt-32da2ddd862b",
+      "timestamp": "2026-10-01T04:30:55.858749Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "detection_gaps_failed",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "XAI_API_KEY is not set",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "error": "XAI_API_KEY is not set"
+      }
+    }
+  ],
+  "communications": [],
+  "detection_gaps": [],
+  "ai_triage": null,
+  "resolution_notes": null,
+  "postmortem_draft": null,
+  "assigned_to": null,
+  "support_group": null
+}
