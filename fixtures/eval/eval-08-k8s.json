@@ -1,0 +1,62 @@
+{
+  "id": "eval-08-k8s",
+  "source": "alert",
+  "input": {
+    "monitor": "node-pool-web-memory",
+    "service": "node-pool-web",
+    "message": "node memory >90% on 4 nodes",
+    "severity": "high"
+  },
+  "ground_truth": {
+    "priority": "High",
+    "impact_score": 75,
+    "routing_suggestion": "Platform",
+    "gaps_min_high_medium": 1
+  },
+  "mock": {
+    "triage": {
+      "affected_users_estimate": 1000,
+      "category": "capacity",
+      "duplicate_of": null,
+      "reasoning": "Compute pool under k8s-prod; Application workloads schedule here.",
+      "confidence": 0.9,
+      "priority": "High",
+      "impact_score": 74,
+      "affected_services": [
+        "node-pool-web"
+      ],
+      "routing_suggestion": "Platform"
+    },
+    "ack": {
+      "audience": "customers",
+      "channel": "status_page",
+      "subject": "Possible slowness",
+      "body": "We are investigating infrastructure load that may slow the site.",
+      "tone": "calm",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.86
+    },
+    "status": {
+      "audience": "internal",
+      "channel": "slack",
+      "subject": "node memory",
+      "body": "node-pool-web memory >90% on 4 nodes. Platform owning.",
+      "tone": "direct",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.84
+    },
+    "gaps": {
+      "gaps": [
+        {
+          "gap_description": "No workload eviction warning",
+          "evidence": "Memory pressure alerted without pod eviction count.",
+          "suggested_monitoring_or_runbook_change": "Alert on evicted pods in website-web namespace.",
+          "severity": "Medium",
+          "discovered_during": "triage",
+          "status": "proposed"
+        }
+      ],
+      "confidence": 0.82
+    }
+  }
+}

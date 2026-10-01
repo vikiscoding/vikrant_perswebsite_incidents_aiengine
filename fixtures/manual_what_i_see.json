@@ -1,0 +1,7 @@
+{
+  "reporter": "human:vikrant",
+  "title": "What I see on the site right now",
+  "description": "Paste the condition here in plain language. Example: homepage loads, checkout pay button spins then fails, started about ten minutes ago, a few users in chat.",
+  "affected_service": "checkout-api",
+  "claimed_priority": "Low"
+}

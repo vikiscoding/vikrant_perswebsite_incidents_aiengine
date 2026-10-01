@@ -1,0 +1,63 @@
+{
+  "id": "eval-03-checkout",
+  "source": "manual",
+  "input": {
+    "reporter": "human:support-l1",
+    "title": "Customers cannot complete checkout",
+    "description": "Pay button spins then fails.",
+    "affected_service": "checkout-api",
+    "claimed_priority": "Low"
+  },
+  "ground_truth": {
+    "priority": "Critical",
+    "impact_score": 85,
+    "routing_suggestion": "Application",
+    "gaps_min_high_medium": 1
+  },
+  "mock": {
+    "triage": {
+      "affected_users_estimate": 1000,
+      "category": "availability",
+      "duplicate_of": null,
+      "reasoning": "Checkout-api is Critical Production. Claimed Low is untrusted.",
+      "confidence": 0.9,
+      "priority": "Critical",
+      "impact_score": 86,
+      "affected_services": [
+        "checkout-api"
+      ],
+      "routing_suggestion": "Application"
+    },
+    "ack": {
+      "audience": "customers",
+      "channel": "status_page",
+      "subject": "Checkout issues",
+      "body": "Some customers cannot complete checkout. We are investigating.",
+      "tone": "calm",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.86
+    },
+    "status": {
+      "audience": "internal",
+      "channel": "slack",
+      "subject": "checkout-api",
+      "body": "Support reports pay button failures on checkout-api.",
+      "tone": "direct",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.84
+    },
+    "gaps": {
+      "gaps": [
+        {
+          "gap_description": "No synthetic checkout probe",
+          "evidence": "Issue arrived via human report, not a probe.",
+          "suggested_monitoring_or_runbook_change": "Add checkout synthetic that asserts pay completes.",
+          "severity": "High",
+          "discovered_during": "triage",
+          "status": "proposed"
+        }
+      ],
+      "confidence": 0.82
+    }
+  }
+}

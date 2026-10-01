@@ -1,0 +1,62 @@
+{
+  "id": "eval-07-cicd",
+  "source": "alert",
+  "input": {
+    "monitor": "cicd-queue",
+    "service": "cicd",
+    "message": "deploy pipeline stuck 40m",
+    "severity": "medium"
+  },
+  "ground_truth": {
+    "priority": "Medium",
+    "impact_score": 40,
+    "routing_suggestion": "Reliability",
+    "gaps_min_high_medium": 0
+  },
+  "mock": {
+    "triage": {
+      "affected_users_estimate": 0,
+      "category": "tooling",
+      "duplicate_of": null,
+      "reasoning": "CI/CD High but not user-facing; Reliability owns it.",
+      "confidence": 0.88,
+      "priority": "Medium",
+      "impact_score": 42,
+      "affected_services": [
+        "cicd"
+      ],
+      "routing_suggestion": "Reliability"
+    },
+    "ack": {
+      "audience": "customers",
+      "channel": "status_page",
+      "subject": "Internal tooling",
+      "body": "Internal deploy tooling is degraded. Customer traffic is not known to be affected.",
+      "tone": "calm",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.86
+    },
+    "status": {
+      "audience": "internal",
+      "channel": "slack",
+      "subject": "cicd stuck",
+      "body": "Pipeline queue 40m. Reliability owning.",
+      "tone": "direct",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.84
+    },
+    "gaps": {
+      "gaps": [
+        {
+          "gap_description": "No customer-impact flag on cicd alerts",
+          "evidence": "Alert has no linkage to whether a prod rollback is blocked.",
+          "suggested_monitoring_or_runbook_change": "Tag cicd alerts with blocked-prod-change boolean.",
+          "severity": "Low",
+          "discovered_during": "triage",
+          "status": "proposed"
+        }
+      ],
+      "confidence": 0.82
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "eval-04-postgres",
+  "source": "alert",
+  "input": {
+    "monitor": "postgres-primary-connections",
+    "service": "postgres-primary",
+    "message": "connection saturation 95%",
+    "severity": "critical"
+  },
+  "ground_truth": {
+    "priority": "Critical",
+    "impact_score": 92,
+    "routing_suggestion": "Data",
+    "gaps_min_high_medium": 1
+  },
+  "mock": {
+    "triage": {
+      "affected_users_estimate": 1000,
+      "category": "capacity",
+      "duplicate_of": null,
+      "reasoning": "Primary DB CI-DATA-001 Critical; website-api and checkout depend on it.",
+      "confidence": 0.9,
+      "priority": "Critical",
+      "impact_score": 93,
+      "affected_services": [
+        "postgres-primary"
+      ],
+      "routing_suggestion": "Data"
+    },
+    "ack": {
+      "audience": "customers",
+      "channel": "status_page",
+      "subject": "Service disruption",
+      "body": "Some features may be slow or fail. We are investigating.",
+      "tone": "calm",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.86
+    },
+    "status": {
+      "audience": "internal",
+      "channel": "slack",
+      "subject": "postgres saturation",
+      "body": "postgres-primary connections 95%. Data owning.",
+      "tone": "direct",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.84
+    },
+    "gaps": {
+      "gaps": [
+        {
+          "gap_description": "No app-side pool exhaustion alert",
+          "evidence": "Only DB connections alerted; apps that depend on it were silent.",
+          "suggested_monitoring_or_runbook_change": "Alert when checkout-api DB pool wait exceeds SLO.",
+          "severity": "Medium",
+          "discovered_during": "triage",
+          "status": "proposed"
+        }
+      ],
+      "confidence": 0.82
+    }
+  }
+}

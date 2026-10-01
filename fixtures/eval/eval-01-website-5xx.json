@@ -1,0 +1,63 @@
+{
+  "id": "eval-01-website-5xx",
+  "source": "alert",
+  "input": {
+    "monitor": "website-web-5xx",
+    "service": "website-web",
+    "severity": "critical",
+    "message": "5xx rate above 5% for 5 minutes",
+    "fired_at": "2026-08-14T10:00:00Z"
+  },
+  "ground_truth": {
+    "priority": "Critical",
+    "impact_score": 88,
+    "routing_suggestion": "Application",
+    "gaps_min_high_medium": 1
+  },
+  "mock": {
+    "triage": {
+      "affected_users_estimate": 1000,
+      "category": "availability",
+      "duplicate_of": null,
+      "reasoning": "Public website CI-APP-001 Critical, sustained 5xx.",
+      "confidence": 0.9,
+      "priority": "Critical",
+      "impact_score": 90,
+      "affected_services": [
+        "website-web"
+      ],
+      "routing_suggestion": "Application"
+    },
+    "ack": {
+      "audience": "customers",
+      "channel": "status_page",
+      "subject": "Website errors",
+      "body": "We are investigating errors on the public website.",
+      "tone": "calm",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.86
+    },
+    "status": {
+      "audience": "internal",
+      "channel": "slack",
+      "subject": "website-web 5xx",
+      "body": "Investigating 5xx on website-web. No RCA yet.",
+      "tone": "direct",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.84
+    },
+    "gaps": {
+      "gaps": [
+        {
+          "gap_description": "No SLO burn alert on website-web",
+          "evidence": "Alert is generic 5xx rate, not SLO burn on CI-APP-001.",
+          "suggested_monitoring_or_runbook_change": "Add SLO burn-rate monitor on website-web.",
+          "severity": "High",
+          "discovered_during": "triage",
+          "status": "proposed"
+        }
+      ],
+      "confidence": 0.82
+    }
+  }
+}

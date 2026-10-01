@@ -1,0 +1,62 @@
+{
+  "id": "eval-06-identity",
+  "source": "alert",
+  "input": {
+    "monitor": "identity-login-failures",
+    "service": "identity",
+    "message": "login failure rate 12%",
+    "severity": "high"
+  },
+  "ground_truth": {
+    "priority": "High",
+    "impact_score": 80,
+    "routing_suggestion": "Security",
+    "gaps_min_high_medium": 1
+  },
+  "mock": {
+    "triage": {
+      "affected_users_estimate": 1000,
+      "category": "security",
+      "duplicate_of": null,
+      "reasoning": "Identity CI owned by Security; login failures block accounts and checkout.",
+      "confidence": 0.9,
+      "priority": "High",
+      "impact_score": 78,
+      "affected_services": [
+        "identity"
+      ],
+      "routing_suggestion": "Security"
+    },
+    "ack": {
+      "audience": "customers",
+      "channel": "status_page",
+      "subject": "Sign-in problems",
+      "body": "Some users cannot sign in. We are investigating.",
+      "tone": "calm",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.86
+    },
+    "status": {
+      "audience": "internal",
+      "channel": "slack",
+      "subject": "identity failures",
+      "body": "Login failure rate 12% on identity. Security owning.",
+      "tone": "direct",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.84
+    },
+    "gaps": {
+      "gaps": [
+        {
+          "gap_description": "No lockout vs outage split",
+          "evidence": "Failure rate does not distinguish bad passwords from IdP outage.",
+          "suggested_monitoring_or_runbook_change": "Split metrics: invalid creds vs issuer 5xx.",
+          "severity": "High",
+          "discovered_during": "triage",
+          "status": "proposed"
+        }
+      ],
+      "confidence": 0.82
+    }
+  }
+}

@@ -1,0 +1,48 @@
+# Keeps GitHub honest with the incident record (see SITE_BRIDGE.md).
+# Closing an incident issue with the button does not close the incident: if the record is not CLOSED,
+# reopen the issue and say which command comes next. Found in game day 1 (1 Oct 2026).
+name: incident-guard
+on:
+  issues:
+    types: [closed]
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: incident-store
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    if: >-
+      contains(github.event.issue.labels.*.name, 'incident') &&
+      github.event.sender.login != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          ref: incident-data
+          path: data
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Compare the issue with the incident record
+        id: bridge
+        env:
+          ISSUE: ${{ github.event.issue.number }}
+        run: python site_bridge.py --root data guard --issue "$ISSUE"
+      - name: Reopen and explain
+        if: steps.bridge.outputs.reopen == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+          REPLY: ${{ steps.bridge.outputs.reply }}
+        run: |
+          gh issue reopen "$ISSUE"
+          gh issue comment "$ISSUE" --body "$REPLY"

@@ -1,0 +1,7 @@
+{
+  "reporter": "human:support-l1",
+  "title": "Customers cannot complete checkout",
+  "description": "Multiple users report the pay button spins then fails. Started about 10:05 UTC.",
+  "affected_service": "checkout-api",
+  "claimed_priority": "Low"
+}

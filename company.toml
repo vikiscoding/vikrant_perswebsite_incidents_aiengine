@@ -1,0 +1,100 @@
+# Company profile — this is what you edit for a new organization.
+# Copy this file, change the values, point INCIDENT_COMPANY_FILE at it if needed.
+# Restart the process after edits. No code changes required for teams, states, or intake sources.
+
+[company]
+name = "Northstar"
+kind = "public-facing website"
+description = "Consumer website, public API, and checkout."
+cmdb = "mock_cmdb.json"
+
+# Owning teams. Add or remove rows. Support/intake groups do not belong here
+# unless they own configuration items. Names must match mock_cmdb.json owner_team.
+
+[[teams]]
+name = "Edge"
+description = "DNS, CDN, WAF, load balancers, TLS — can users reach the site?"
+
+[[teams]]
+name = "Platform"
+description = "Kubernetes, nodes, ingress — is the runtime healthy?"
+
+[[teams]]
+name = "Application"
+description = "Website, public API, checkout — is the product correct?"
+
+[[teams]]
+name = "Data"
+description = "Postgres, Redis, search — is state available and consistent?"
+
+[[teams]]
+name = "Reliability"
+description = "CI/CD, observability, paging — can we see and ship?"
+
+[[teams]]
+name = "Security"
+description = "Identity, secrets, abuse controls — is access trustworthy?"
+
+# Lifecycle. Default is the Phase 1 six-state machine.
+# requires_human: never | always | if_high_or_unknown_priority
+
+[lifecycle]
+states = ["DETECTED", "TRIAGING", "ACKNOWLEDGED", "ACTIVE", "RESOLVED", "CLOSED"]
+start_state = "DETECTED"
+
+[[lifecycle.transitions]]
+from = "DETECTED"
+to = "TRIAGING"
+requires_human = "never"
+
+[[lifecycle.transitions]]
+from = "TRIAGING"
+to = "ACKNOWLEDGED"
+requires_human = "if_high_or_unknown_priority"
+
+[[lifecycle.transitions]]
+from = "ACKNOWLEDGED"
+to = "ACTIVE"
+requires_human = "never"
+
+[[lifecycle.transitions]]
+from = "ACTIVE"
+to = "RESOLVED"
+requires_human = "always"
+
+[[lifecycle.transitions]]
+from = "RESOLVED"
+to = "CLOSED"
+requires_human = "always"
+
+[[lifecycle.transitions]]
+from = "RESOLVED"
+to = "ACTIVE"
+requires_human = "always"
+
+[[lifecycle.transitions]]
+from = "CLOSED"
+to = "ACTIVE"
+requires_human = "always"
+
+# Intake sources. Add a table to accept a new input shape.
+# title_template / reporter_template use payload field names in braces.
+# Fields listed in untrusted_priority_fields never become Incident.priority.
+
+[[intake]]
+id = "alert"
+required = ["monitor", "service", "message"]
+optional = ["fired_at", "severity", "labels"]
+service_field = "service"
+title_template = "{monitor}: {message}"
+reporter_template = "alert:{monitor}"
+untrusted_priority_fields = ["severity"]
+
+[[intake]]
+id = "manual"
+required = ["reporter", "title", "description"]
+optional = ["affected_service", "claimed_priority"]
+service_field = "affected_service"
+title_field = "title"
+reporter_field = "reporter"
+untrusted_priority_fields = ["claimed_priority"]

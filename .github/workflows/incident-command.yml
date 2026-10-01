@@ -1,0 +1,66 @@
+# The human gate: the repo owner's /commands on an issue labelled `incident` (see SITE_BRIDGE.md).
+# Anyone else's comments never start this job. The comment text reaches the bridge only through an env var.
+# The filter is loose on purpose (" /ack" with a leading space was silently skipped in game day 1); the bridge
+# trims, decides, and stays silent on comments that are not commands.
+name: incident-command
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: incident-store
+  cancel-in-progress: false
+
+jobs:
+  command:
+    if: >-
+      github.event.issue.pull_request == null &&
+      contains(github.event.issue.labels.*.name, 'incident') &&
+      github.event.comment.user.login == 'vikiscoding' &&
+      contains(github.event.comment.body, '/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          ref: incident-data
+          path: data
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Run the command through the agent's CLI
+        id: bridge
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          ISSUE: ${{ github.event.issue.number }}
+          AUTHOR: ${{ github.event.comment.user.login }}
+        run: python site_bridge.py --root data command --issue "$ISSUE" --author "$AUTHOR"
+
+      - name: Reply, and close the issue when the incident is closed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+          REPLY: ${{ steps.bridge.outputs.reply }}
+          CLOSE: ${{ steps.bridge.outputs.close }}
+        run: |
+          if [ -n "$REPLY" ]; then gh issue comment "$ISSUE" --body "$REPLY"; fi
+          if [ "$CLOSE" = "true" ]; then gh issue close "$ISSUE" --reason completed; fi
+
+      - name: Publish feed and commit the store
+        env:
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          python site_bridge.py --root data feed
+          cd data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || { git commit -q -m "incident store: command on issue #$ISSUE"; git push -q; }

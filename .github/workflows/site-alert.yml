@@ -1,0 +1,95 @@
+# vikrantsingh.fyi -> incident engine (see SITE_BRIDGE.md).
+# The site's Worker sends repository_dispatch `site_alert` (heartbeat failing) or `site_recovered`.
+# One short run per event; the store lives on the incident-data branch; runs never overlap.
+name: site-alert
+on:
+  repository_dispatch:
+    types: [site_alert, site_recovered]
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: Event to simulate
+        type: choice
+        options: [site_alert, site_recovered]
+        default: site_alert
+      message:
+        description: Alert message
+        default: manual test alert
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: incident-store
+  cancel-in-progress: false
+
+jobs:
+  handle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          ref: incident-data
+          path: data
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Build the alert payload
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          CLIENT_PAYLOAD: ${{ toJSON(github.event.client_payload) }}
+          MANUAL_MESSAGE: ${{ inputs.message }}
+        run: |
+          if [ "$EVENT_NAME" = "repository_dispatch" ]; then
+            printf '%s' "$CLIENT_PAYLOAD" > payload.json
+          else
+            jq -n --arg m "$MANUAL_MESSAGE" '{monitor:"manual test", service:"vikrantsingh.fyi", message:$m}' > payload.json
+          fi
+
+      - name: Run the bridge
+        id: bridge
+        env:
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          MODE: ${{ (github.event.action == 'site_recovered' || inputs.kind == 'site_recovered') && 'recovered' || 'alert' }}
+        run: |
+          export ALERT_PAYLOAD="$(cat payload.json)"
+          python site_bridge.py --root data "$MODE"
+
+      - name: Open the incident issue
+        if: steps.bridge.outputs.mode == 'new'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: ${{ steps.bridge.outputs.title }}
+          BODY: ${{ steps.bridge.outputs.body }}
+          INCIDENT: ${{ steps.bridge.outputs.incident_id }}
+        run: |
+          printf '%s' "$BODY" > body.md
+          url=$(gh issue create --title "$TITLE" --body-file body.md --label incident)
+          python site_bridge.py --root data link --incident "$INCIDENT" --issue "${url##*/}"
+
+      - name: Comment on the existing issue
+        if: steps.bridge.outputs.mode == 'duplicate' || steps.bridge.outputs.mode == 'recovered'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPLY: ${{ steps.bridge.outputs.reply }}
+          INCIDENT: ${{ steps.bridge.outputs.incident_id }}
+        run: |
+          num=$(jq -r --arg i "$INCIDENT" '.[$i] // empty' data/issues.json 2>/dev/null || true)
+          if [ -n "$num" ]; then gh issue comment "$num" --body "$REPLY"; fi
+
+      - name: Publish feed and commit the store
+        env:
+          EVENT: ${{ github.event.action || inputs.kind }}
+        run: |
+          python site_bridge.py --root data feed
+          cd data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || { git commit -q -m "incident store: $EVENT"; git push -q; }

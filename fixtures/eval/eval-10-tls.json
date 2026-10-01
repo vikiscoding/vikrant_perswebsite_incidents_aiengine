@@ -1,0 +1,62 @@
+{
+  "id": "eval-10-tls",
+  "source": "alert",
+  "input": {
+    "monitor": "tls-certs-expiry",
+    "service": "tls-certs",
+    "message": "certificate expires in 7 days",
+    "severity": "high"
+  },
+  "ground_truth": {
+    "priority": "High",
+    "impact_score": 65,
+    "routing_suggestion": "Edge",
+    "gaps_min_high_medium": 1
+  },
+  "mock": {
+    "triage": {
+      "affected_users_estimate": 0,
+      "category": "certificate",
+      "duplicate_of": null,
+      "reasoning": "TLS expiry on Edge CI would take the public site down if ignored.",
+      "confidence": 0.9,
+      "priority": "High",
+      "impact_score": 66,
+      "affected_services": [
+        "tls-certs"
+      ],
+      "routing_suggestion": "Edge"
+    },
+    "ack": {
+      "audience": "customers",
+      "channel": "status_page",
+      "subject": "Maintenance upcoming",
+      "body": "We are handling a certificate renewal. No outage is happening now.",
+      "tone": "calm",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.86
+    },
+    "status": {
+      "audience": "internal",
+      "channel": "slack",
+      "subject": "tls 7d",
+      "body": "tls-certs expires in 7 days. Edge owning.",
+      "tone": "direct",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.84
+    },
+    "gaps": {
+      "gaps": [
+        {
+          "gap_description": "Expiry alert too late",
+          "evidence": "7-day warning is tight for change windows.",
+          "suggested_monitoring_or_runbook_change": "Alert at 30d and 14d as well as 7d.",
+          "severity": "High",
+          "discovered_during": "triage",
+          "status": "proposed"
+        }
+      ],
+      "confidence": 0.82
+    }
+  }
+}

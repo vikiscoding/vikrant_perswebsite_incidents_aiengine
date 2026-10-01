@@ -1,0 +1,211 @@
+[
+  {
+    "ci_id": "CI-EDGE-001",
+    "name": "dns-public",
+    "type": "DNS",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Edge",
+    "technical_contact": "Priya Nair",
+    "depends_on": ["CI-EDGE-002"]
+  },
+  {
+    "ci_id": "CI-EDGE-002",
+    "name": "cdn",
+    "type": "CDN",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Edge",
+    "technical_contact": "Priya Nair",
+    "depends_on": ["CI-EDGE-004"]
+  },
+  {
+    "ci_id": "CI-EDGE-003",
+    "name": "waf",
+    "type": "WAF",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "High",
+    "owner_team": "Edge",
+    "technical_contact": "Marcus Cole",
+    "depends_on": ["CI-EDGE-004"]
+  },
+  {
+    "ci_id": "CI-EDGE-004",
+    "name": "load-balancer",
+    "type": "LoadBalancer",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Edge",
+    "technical_contact": "Marcus Cole",
+    "depends_on": ["CI-PLT-003", "CI-EDGE-005"]
+  },
+  {
+    "ci_id": "CI-EDGE-005",
+    "name": "tls-certs",
+    "type": "Certificate",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Edge",
+    "technical_contact": "Priya Nair",
+    "depends_on": []
+  },
+  {
+    "ci_id": "CI-PLT-001",
+    "name": "k8s-prod",
+    "type": "Cluster",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Platform",
+    "technical_contact": "Diego Alvarez",
+    "depends_on": ["CI-PLT-002"]
+  },
+  {
+    "ci_id": "CI-PLT-002",
+    "name": "node-pool-web",
+    "type": "Compute",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Platform",
+    "technical_contact": "Diego Alvarez",
+    "depends_on": []
+  },
+  {
+    "ci_id": "CI-PLT-003",
+    "name": "ingress",
+    "type": "Ingress",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Platform",
+    "technical_contact": "Diego Alvarez",
+    "depends_on": ["CI-PLT-001"]
+  },
+  {
+    "ci_id": "CI-APP-001",
+    "name": "website-web",
+    "type": "Application",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Application",
+    "technical_contact": "Amina Farouk",
+    "depends_on": ["CI-APP-002", "CI-EDGE-002", "CI-PLT-003"]
+  },
+  {
+    "ci_id": "CI-APP-002",
+    "name": "website-api",
+    "type": "Application",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Application",
+    "technical_contact": "Amina Farouk",
+    "depends_on": ["CI-PLT-001", "CI-DATA-001", "CI-DATA-003", "CI-SEC-001"]
+  },
+  {
+    "ci_id": "CI-APP-003",
+    "name": "checkout-api",
+    "type": "Application",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Application",
+    "technical_contact": "Jonah Blake",
+    "depends_on": ["CI-APP-002", "CI-DATA-001", "CI-DATA-003"]
+  },
+  {
+    "ci_id": "CI-DATA-001",
+    "name": "postgres-primary",
+    "type": "Database",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Data",
+    "technical_contact": "Elena Voss",
+    "depends_on": []
+  },
+  {
+    "ci_id": "CI-DATA-002",
+    "name": "postgres-replica",
+    "type": "Database",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "High",
+    "owner_team": "Data",
+    "technical_contact": "Elena Voss",
+    "depends_on": ["CI-DATA-001"]
+  },
+  {
+    "ci_id": "CI-DATA-003",
+    "name": "redis-session",
+    "type": "Cache",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "High",
+    "owner_team": "Data",
+    "technical_contact": "Elena Voss",
+    "depends_on": []
+  },
+  {
+    "ci_id": "CI-DATA-004",
+    "name": "search",
+    "type": "Search",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Medium",
+    "owner_team": "Data",
+    "technical_contact": "Elena Voss",
+    "depends_on": ["CI-PLT-001"]
+  },
+  {
+    "ci_id": "CI-REL-001",
+    "name": "cicd",
+    "type": "Pipeline",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "High",
+    "owner_team": "Reliability",
+    "technical_contact": "Sam Okonkwo",
+    "depends_on": ["CI-PLT-001"]
+  },
+  {
+    "ci_id": "CI-REL-002",
+    "name": "observability",
+    "type": "Monitoring",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "High",
+    "owner_team": "Reliability",
+    "technical_contact": "Sam Okonkwo",
+    "depends_on": ["CI-PLT-001"]
+  },
+  {
+    "ci_id": "CI-SEC-001",
+    "name": "identity",
+    "type": "Identity",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Security",
+    "technical_contact": "Chris Lang",
+    "depends_on": ["CI-DATA-001", "CI-DATA-003"]
+  },
+  {
+    "ci_id": "CI-SEC-002",
+    "name": "secrets",
+    "type": "Secrets",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Critical",
+    "owner_team": "Security",
+    "technical_contact": "Chris Lang",
+    "depends_on": ["CI-PLT-001"]
+  }
+]

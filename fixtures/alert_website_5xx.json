@@ -1,0 +1,11 @@
+{
+  "monitor": "website-web-5xx",
+  "service": "website-web",
+  "severity": "critical",
+  "message": "5xx rate above 5% for 5 minutes on the public website",
+  "fired_at": "2026-08-14T10:00:00Z",
+  "labels": {
+    "env": "production",
+    "slo": "availability"
+  }
+}

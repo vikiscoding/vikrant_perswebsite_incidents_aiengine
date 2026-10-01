@@ -1,0 +1,62 @@
+{
+  "id": "eval-09-search",
+  "source": "alert",
+  "input": {
+    "monitor": "search-latency",
+    "service": "search",
+    "message": "p99 search 2.4s",
+    "severity": "medium"
+  },
+  "ground_truth": {
+    "priority": "Medium",
+    "impact_score": 35,
+    "routing_suggestion": "Data",
+    "gaps_min_high_medium": 1
+  },
+  "mock": {
+    "triage": {
+      "affected_users_estimate": 400,
+      "category": "latency",
+      "duplicate_of": null,
+      "reasoning": "Search is Medium Data CI; site still up without it.",
+      "confidence": 0.87,
+      "priority": "Medium",
+      "impact_score": 36,
+      "affected_services": [
+        "search"
+      ],
+      "routing_suggestion": "Data"
+    },
+    "ack": {
+      "audience": "customers",
+      "channel": "status_page",
+      "subject": "Search is slow",
+      "body": "Site search is slower than usual. Browsing and checkout should still work.",
+      "tone": "calm",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.86
+    },
+    "status": {
+      "audience": "internal",
+      "channel": "slack",
+      "subject": "search p99",
+      "body": "search p99 2.4s. Data owning.",
+      "tone": "direct",
+      "expected_resolution_window": "investigating",
+      "confidence": 0.84
+    },
+    "gaps": {
+      "gaps": [
+        {
+          "gap_description": "No search fallback content",
+          "evidence": "No recorded runbook for serving browse-without-search.",
+          "suggested_monitoring_or_runbook_change": "Add runbook: degrade search box, keep nav.",
+          "severity": "Medium",
+          "discovered_during": "triage",
+          "status": "proposed"
+        }
+      ],
+      "confidence": 0.82
+    }
+  }
+}
