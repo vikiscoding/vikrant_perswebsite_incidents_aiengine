@@ -33,3 +33,4 @@
 {"incident_id": "inc-d063a8dbabcf", "metric": "state_dwell_ms", "value": 35691667, "labels": {"state": "TRIAGING"}, "timestamp": "2026-10-01T14:59:07.536063+00:00", "actor": "human:vikiscoding"}
 {"incident_id": "inc-d063a8dbabcf", "metric": "state_dwell_ms", "value": 12, "labels": {"state": "ACKNOWLEDGED"}, "timestamp": "2026-10-01T14:59:07.546685+00:00", "actor": "human:vikiscoding"}
 {"incident_id": "inc-d063a8dbabcf", "metric": "state_dwell_ms", "value": 188429, "labels": {"state": "ACTIVE"}, "timestamp": "2026-10-01T15:02:15.976701+00:00", "actor": "human:vikiscoding"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "state_dwell_ms", "value": 123755, "labels": {"state": "RESOLVED"}, "timestamp": "2026-10-01T15:04:19.731616+00:00", "actor": "human:vikiscoding"}
