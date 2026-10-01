@@ -85,4 +85,4 @@ We stay narrow within each phase, ship working slices that deliver obvious value
 
 **Document map**: `docs/FIRST_PRINCIPLES.md` (FP + zero trust + logging) · `docs/IMPLEMENTATION_PLAN.md` (build order) · `docs/STATE_MACHINE_DESIGN.md` · `docs/PHASE1_SUCCESS_CRITERIA.md` · `docs/EVALUATION_RUBRIC.md` · `docs/PHASE1_EXIT.md` (sign-off + residual gaps) · `SITE_BRIDGE.md` (live incident desk) · `docs/proposals/HANDOFF_PING.md` (proposal: always-on bounce card) · `docs/proposals/BRIDGE_STANDOWN.md` (proposal: IM leave-code).
 
-Consistent guidance: First principles over process theater. Zero trust over blind automation. Verifiability over magic. Evaluation and real outcomes over demos. Log enough to improve. Keep it simple enough for one person to build, understand, and evolve into something world-class.
+Consistent guidance: First principles over process theater. Zero trust over blind automation. Verifiability over magic. Evaluation and real outcomes over demos. Log enough to improve. Keep it simple enough for one person to build, understand, and evolve one verified slice at a time.
