@@ -12,3 +12,4 @@
 {"incident_id": "inc-b477a482935e", "metric": "state_dwell_ms", "value": 49091, "labels": {"state": "TRIAGING"}, "timestamp": "2026-10-01T04:31:44.874204+00:00", "actor": "human:vikiscoding"}
 {"incident_id": "inc-b477a482935e", "metric": "state_dwell_ms", "value": 8, "labels": {"state": "ACKNOWLEDGED"}, "timestamp": "2026-10-01T04:31:44.881933+00:00", "actor": "human:vikiscoding"}
 {"incident_id": "inc-b477a482935e", "metric": "state_dwell_ms", "value": 26050, "labels": {"state": "ACTIVE"}, "timestamp": "2026-10-01T04:32:10.933831+00:00", "actor": "human:vikiscoding"}
+{"incident_id": "inc-b477a482935e", "metric": "state_dwell_ms", "value": 26706, "labels": {"state": "RESOLVED"}, "timestamp": "2026-10-01T04:32:37.640192+00:00", "actor": "human:vikiscoding"}
