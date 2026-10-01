@@ -295,6 +295,14 @@ def gate_label(incident) -> str:
     return "not triaged"
 
 
+def _latest_human_note(incident) -> str | None:
+    """The owner's most recent /note, shown on the site so a reader of the desk alone gets the context."""
+    for event in reversed(incident.timeline):
+        if event.event_type == "note" and event.actor.startswith("human:") and event.reasoning:
+            return _clip(event.reasoning, 240)
+    return None
+
+
 def actor_kind(actor: str) -> str:
     return "human" if actor.startswith("human:") else "ai" if actor.startswith("ai:") else "service" if actor.startswith("service:") else "other"
 
@@ -317,6 +325,7 @@ def cmd_feed(store: Store, root: Path, repo: str) -> int:
             "updated_at": inc.updated_at.isoformat(timespec="seconds"),
             "triage": None if not t else {"priority": t.priority, "confidence": round(t.confidence, 2), "reasoning": _clip(t.reasoning, 280)},
             "gate": gate_label(inc),
+            "note": _latest_human_note(inc),
             "drafts_unsent": len(inc.communications),
             "gaps": len(inc.detection_gaps),
             "recovered_at": site.get(inc.id, {}).get("recovered_at"),

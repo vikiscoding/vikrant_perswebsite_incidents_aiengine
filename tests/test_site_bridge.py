@@ -65,6 +65,7 @@ def test_full_lifecycle_model_down(env):
     assert item["state"] == "CLOSED" and item["issue_url"].endswith("/issues/7") and item["recovered_at"]
     kinds = {e["kind"] for e in item["timeline"]}
     assert {"service", "human"} <= kinds
+    assert item["note"] == "checked GitHub status page"  # the owner's latest /note reaches the site
     actors = [e.actor for e in Store(root).get_incident(inc).timeline if e.event_type == "state_changed" or e.to_state]
     assert all(not a.startswith("service:") for a in actors[1:])  # the service only created it
 
