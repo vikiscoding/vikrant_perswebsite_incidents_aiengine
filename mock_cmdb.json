@@ -8,7 +8,9 @@
     "criticality": "Critical",
     "owner_team": "Edge",
     "technical_contact": "Priya Nair",
-    "depends_on": ["CI-EDGE-002"]
+    "depends_on": [
+      "CI-EDGE-002"
+    ]
   },
   {
     "ci_id": "CI-EDGE-002",
@@ -19,7 +21,9 @@
     "criticality": "Critical",
     "owner_team": "Edge",
     "technical_contact": "Priya Nair",
-    "depends_on": ["CI-EDGE-004"]
+    "depends_on": [
+      "CI-EDGE-004"
+    ]
   },
   {
     "ci_id": "CI-EDGE-003",
@@ -30,7 +34,9 @@
     "criticality": "High",
     "owner_team": "Edge",
     "technical_contact": "Marcus Cole",
-    "depends_on": ["CI-EDGE-004"]
+    "depends_on": [
+      "CI-EDGE-004"
+    ]
   },
   {
     "ci_id": "CI-EDGE-004",
@@ -41,7 +47,10 @@
     "criticality": "Critical",
     "owner_team": "Edge",
     "technical_contact": "Marcus Cole",
-    "depends_on": ["CI-PLT-003", "CI-EDGE-005"]
+    "depends_on": [
+      "CI-PLT-003",
+      "CI-EDGE-005"
+    ]
   },
   {
     "ci_id": "CI-EDGE-005",
@@ -63,7 +72,9 @@
     "criticality": "Critical",
     "owner_team": "Platform",
     "technical_contact": "Diego Alvarez",
-    "depends_on": ["CI-PLT-002"]
+    "depends_on": [
+      "CI-PLT-002"
+    ]
   },
   {
     "ci_id": "CI-PLT-002",
@@ -85,7 +96,9 @@
     "criticality": "Critical",
     "owner_team": "Platform",
     "technical_contact": "Diego Alvarez",
-    "depends_on": ["CI-PLT-001"]
+    "depends_on": [
+      "CI-PLT-001"
+    ]
   },
   {
     "ci_id": "CI-APP-001",
@@ -96,7 +109,11 @@
     "criticality": "Critical",
     "owner_team": "Application",
     "technical_contact": "Amina Farouk",
-    "depends_on": ["CI-APP-002", "CI-EDGE-002", "CI-PLT-003"]
+    "depends_on": [
+      "CI-APP-002",
+      "CI-EDGE-002",
+      "CI-PLT-003"
+    ]
   },
   {
     "ci_id": "CI-APP-002",
@@ -107,7 +124,12 @@
     "criticality": "Critical",
     "owner_team": "Application",
     "technical_contact": "Amina Farouk",
-    "depends_on": ["CI-PLT-001", "CI-DATA-001", "CI-DATA-003", "CI-SEC-001"]
+    "depends_on": [
+      "CI-PLT-001",
+      "CI-DATA-001",
+      "CI-DATA-003",
+      "CI-SEC-001"
+    ]
   },
   {
     "ci_id": "CI-APP-003",
@@ -118,7 +140,11 @@
     "criticality": "Critical",
     "owner_team": "Application",
     "technical_contact": "Jonah Blake",
-    "depends_on": ["CI-APP-002", "CI-DATA-001", "CI-DATA-003"]
+    "depends_on": [
+      "CI-APP-002",
+      "CI-DATA-001",
+      "CI-DATA-003"
+    ]
   },
   {
     "ci_id": "CI-DATA-001",
@@ -140,7 +166,9 @@
     "criticality": "High",
     "owner_team": "Data",
     "technical_contact": "Elena Voss",
-    "depends_on": ["CI-DATA-001"]
+    "depends_on": [
+      "CI-DATA-001"
+    ]
   },
   {
     "ci_id": "CI-DATA-003",
@@ -162,7 +190,9 @@
     "criticality": "Medium",
     "owner_team": "Data",
     "technical_contact": "Elena Voss",
-    "depends_on": ["CI-PLT-001"]
+    "depends_on": [
+      "CI-PLT-001"
+    ]
   },
   {
     "ci_id": "CI-REL-001",
@@ -173,7 +203,9 @@
     "criticality": "High",
     "owner_team": "Reliability",
     "technical_contact": "Sam Okonkwo",
-    "depends_on": ["CI-PLT-001"]
+    "depends_on": [
+      "CI-PLT-001"
+    ]
   },
   {
     "ci_id": "CI-REL-002",
@@ -184,7 +216,9 @@
     "criticality": "High",
     "owner_team": "Reliability",
     "technical_contact": "Sam Okonkwo",
-    "depends_on": ["CI-PLT-001"]
+    "depends_on": [
+      "CI-PLT-001"
+    ]
   },
   {
     "ci_id": "CI-SEC-001",
@@ -195,7 +229,10 @@
     "criticality": "Critical",
     "owner_team": "Security",
     "technical_contact": "Chris Lang",
-    "depends_on": ["CI-DATA-001", "CI-DATA-003"]
+    "depends_on": [
+      "CI-DATA-001",
+      "CI-DATA-003"
+    ]
   },
   {
     "ci_id": "CI-SEC-002",
@@ -206,6 +243,73 @@
     "criticality": "Critical",
     "owner_team": "Security",
     "technical_contact": "Chris Lang",
-    "depends_on": ["CI-PLT-001"]
+    "depends_on": [
+      "CI-PLT-001"
+    ]
+  },
+  {
+    "ci_id": "CI-SITE-001",
+    "name": "vikrantsingh.fyi",
+    "type": "Website",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Medium",
+    "owner_team": "Application",
+    "technical_contact": "Vikrant Singh",
+    "depends_on": [
+      "CI-SITE-002"
+    ],
+    "details": {
+      "url": "https://vikrantsingh.fyi",
+      "note": "Personal site. Pages are static and degrade open: a heartbeat failure never takes pages down."
+    }
+  },
+  {
+    "ci_id": "CI-SITE-002",
+    "name": "site-heartbeat",
+    "type": "ScheduledJob",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Medium",
+    "owner_team": "Reliability",
+    "technical_contact": "Vikrant Singh",
+    "depends_on": [
+      "CI-SITE-003",
+      "CI-SITE-004"
+    ],
+    "details": {
+      "schedule": "every 10 minutes (Cloudflare Cron Trigger)",
+      "runbook_hint": "GitHub 5xx or timeouts on this job = external dependency: check githubstatus.com before suspecting a regression. 401 = token expired. The snapshot absorbs two missed runs; the outside probe pages after 35 minutes stale."
+    }
+  },
+  {
+    "ci_id": "CI-SITE-003",
+    "name": "github-api",
+    "type": "ExternalDependency",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Medium",
+    "owner_team": "Reliability",
+    "technical_contact": "Vikrant Singh",
+    "depends_on": [],
+    "details": {
+      "provider": "GitHub",
+      "status_page": "https://www.githubstatus.com"
+    }
+  },
+  {
+    "ci_id": "CI-SITE-004",
+    "name": "cloudflare-kv",
+    "type": "KeyValueStore",
+    "environment": "Production",
+    "status": "Operational",
+    "criticality": "Medium",
+    "owner_team": "Platform",
+    "technical_contact": "Vikrant Singh",
+    "depends_on": [],
+    "details": {
+      "provider": "Cloudflare Workers KV",
+      "status_page": "https://www.cloudflarestatus.com"
+    }
   }
 ]
