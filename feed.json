@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T20:25:49+00:00",
+  "generated_at": "2026-10-01T20:29:24+00:00",
   "repo": "vikiscoding/vikrant_perswebsite_incidents_aiengine",
   "incidents": [
     {
@@ -8,13 +8,14 @@
       "state": "CLOSED",
       "priority": "Low",
       "created_at": "2026-10-01T05:04:15+00:00",
-      "updated_at": "2026-10-01T16:18:22+00:00",
+      "updated_at": "2026-10-01T20:29:22+00:00",
       "triage": {
         "priority": "Low",
         "confidence": 0.85,
         "reasoning": "Intake is explicitly labeled manual test and not a real outage. CMDB has no primary CI, no matches, no dependencies, and unknown_service vikrantsingh.fyi. Failure is a scheduled job HTTP 503 against GitHub, which aligns with Reliability (CI/CD/observability). Sole listed open_inc"
       },
       "gate": "auto-applied under the earlier low-risk rule (before 1 Oct 2026); AI priority now waits for /approve",
+      "note": "Game day 1 (planned fault, FAULT=github_5xx): the site's real alert landed on this test ticket (finding 1, since fixed). See the postmortem: https://vikrantsingh.fyi/notes/postmortem-game-day-1/",
       "drafts_unsent": 2,
       "gaps": 3,
       "recovered_at": "2026-10-01T05:40:15.780Z",
@@ -25,12 +26,6 @@
           "kind": "service",
           "event": "incident_created",
           "to": "DETECTED"
-        },
-        {
-          "at": "2026-10-01T05:04:36+00:00",
-          "kind": "ai",
-          "event": "ai_call",
-          "to": null
         },
         {
           "at": "2026-10-01T05:04:36+00:00",
@@ -91,6 +86,12 @@
           "kind": "human",
           "event": "note",
           "to": null
+        },
+        {
+          "at": "2026-10-01T20:29:22+00:00",
+          "kind": "human",
+          "event": "note",
+          "to": null
         }
       ]
     },
@@ -103,6 +104,7 @@
       "updated_at": "2026-10-01T04:32:37+00:00",
       "triage": null,
       "gate": "model unavailable; human triage",
+      "note": null,
       "drafts_unsent": 0,
       "gaps": 0,
       "recovered_at": null,
