@@ -1,9 +1,9 @@
 {
   "id": "inc-d063a8dbabcf",
   "title": "manual test: Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)",
-  "current_state": "TRIAGING",
+  "current_state": "ACTIVE",
   "created_at": "2026-10-01T05:04:15.827342Z",
-  "updated_at": "2026-10-01T05:05:09.391887Z",
+  "updated_at": "2026-10-01T14:59:07.546685Z",
   "priority": "Low",
   "impact_score": 5,
   "reporter": "alert:manual test",
@@ -649,6 +649,74 @@
         "value": 1,
         "labels": {
           "severity": "Low"
+        }
+      }
+    },
+    {
+      "id": "evt-94b930f2adf0",
+      "timestamp": "2026-10-01T14:59:07.532577Z",
+      "actor": "human:vikiscoding",
+      "event_type": "state_transition",
+      "from_state": "TRIAGING",
+      "to_state": "ACKNOWLEDGED",
+      "reasoning": "acknowledged (via GitHub issue #2)",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": null
+    },
+    {
+      "id": "evt-f72c4c0affde",
+      "timestamp": "2026-10-01T14:59:07.536063Z",
+      "actor": "human:vikiscoding",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric state_dwell_ms=35691667",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "state_dwell_ms",
+        "value": 35691667,
+        "labels": {
+          "state": "TRIAGING"
+        }
+      }
+    },
+    {
+      "id": "evt-301b6a5366d0",
+      "timestamp": "2026-10-01T14:59:07.545237Z",
+      "actor": "human:vikiscoding",
+      "event_type": "state_transition",
+      "from_state": "ACKNOWLEDGED",
+      "to_state": "ACTIVE",
+      "reasoning": "work started (via GitHub issue #2)",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": null
+    },
+    {
+      "id": "evt-ac944960b2a7",
+      "timestamp": "2026-10-01T14:59:07.546685Z",
+      "actor": "human:vikiscoding",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric state_dwell_ms=12",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "state_dwell_ms",
+        "value": 12,
+        "labels": {
+          "state": "ACKNOWLEDGED"
         }
       }
     }
