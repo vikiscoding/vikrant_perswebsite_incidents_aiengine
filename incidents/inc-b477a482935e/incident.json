@@ -1,9 +1,9 @@
 {
   "id": "inc-b477a482935e",
   "title": "manual test: bridge smoke test (not a real outage)",
-  "current_state": "ACTIVE",
+  "current_state": "RESOLVED",
   "created_at": "2026-10-01T04:30:55.735027Z",
-  "updated_at": "2026-10-01T04:31:44.881933Z",
+  "updated_at": "2026-10-01T04:32:10.933831Z",
   "priority": null,
   "impact_score": null,
   "reporter": "alert:manual test",
@@ -516,6 +516,40 @@
         "value": 8,
         "labels": {
           "state": "ACKNOWLEDGED"
+        }
+      }
+    },
+    {
+      "id": "evt-c76849f89876",
+      "timestamp": "2026-10-01T04:32:10.931780Z",
+      "actor": "human:vikiscoding",
+      "event_type": "state_transition",
+      "from_state": "ACTIVE",
+      "to_state": "RESOLVED",
+      "reasoning": "smoke test only; no outage (via GitHub issue #1)",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": true,
+      "approved_by": "human:vikiscoding",
+      "payload": null
+    },
+    {
+      "id": "evt-9567a1e37fd4",
+      "timestamp": "2026-10-01T04:32:10.933831Z",
+      "actor": "human:vikiscoding",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric state_dwell_ms=26050",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "state_dwell_ms",
+        "value": 26050,
+        "labels": {
+          "state": "ACTIVE"
         }
       }
     }
