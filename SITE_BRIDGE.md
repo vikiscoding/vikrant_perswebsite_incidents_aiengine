@@ -24,6 +24,7 @@ the site reads feed.json (public raw URL) into its "Incident desk" on /reliabili
 - **Only the owner's comments run commands**, enforced in the workflow `if:` and again in `site_bridge.py`. The comment text reaches Python only through an env var, never a shell line.
 - **The incident record beats the GitHub thread.** Closing an incident issue with the button reopens it (`incident-guard.yml`) unless the record is CLOSED. Refused commands say which step is valid next, and `/ack` takes only the steps still needed.
 - **The command word is the typed confirmation.** `/resolve` passes `--confirm RESOLVED` to the CLI; holder checks and the lifecycle's `requires_human` rules apply unchanged.
+- **The model never sets priority on the live desk.** `site-alert.yml` runs with `TRIAGE_AUTO_APPLY=off`, so every AI priority, even a confident Low, waits for the owner's `/approve`. Paging never depends on the model: it comes from the site's outside probe on its SLO. (The eval harness and tests keep the default policy.)
 - **The model is optional.** Without `XAI_API_KEY`, or on a Grok failure, the incident is still created and a human triages it.
 - **Visitors cannot create incidents.** Only the site Worker (with a dispatch token) and the owner (manual run) can.
 
@@ -36,6 +37,7 @@ the site reads feed.json (public raw URL) into its "Incident desk" on /reliabili
 | Where | Name | Purpose |
 | --- | --- | --- |
 | This repo | `XAI_API_KEY` | Grok triage and drafts (optional; model-down path without it) |
+| Workflow env | `TRIAGE_AUTO_APPLY=off` | Live desk: no AI priority applies without `/approve` |
 | Site Worker (Cloudflare) | `INCIDENTS_DISPATCH_TOKEN` | Fine-grained token, this repo only, **Contents: read and write** (needed for `repository_dispatch`) |
 
 ## Try it without the site
