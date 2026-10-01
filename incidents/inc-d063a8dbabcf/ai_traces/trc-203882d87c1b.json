@@ -1,0 +1,23 @@
+{
+  "trace_id": "trc-203882d87c1b",
+  "incident_id": "inc-d063a8dbabcf",
+  "purpose": "comms_status_internal",
+  "model": "grok-4.5",
+  "started_at": "2026-10-01T05:04:36.373732+00:00",
+  "ended_at": "2026-10-01T05:04:48.017931+00:00",
+  "latency_ms": 11644,
+  "prompt": "Write a status update. Say what we know now, what we are doing, and what is still unknown. Do not invent a root cause.\naudience=internal. tone=direct, operational, no marketing.\nReturn a CommunicationDraft. channel should be slack for internal, status_page for customers, email for leadership.\nconfidence is required (0 to 1). This is a draft only; it will not be sent.\n\n{\"kind\": \"status\", \"audience\": \"internal\", \"title\": \"manual test: Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)\", \"state\": \"TRIAGING\", \"priority\": \"Low\", \"impact_score\": 5, \"affected_services\": [\"vikrantsingh.fyi\"], \"affected_ci_ids\": [], \"routing\": null, \"triage_reasoning\": \"Intake is explicitly labeled manual test and not a real outage. CMDB has no primary CI, no matches, no dependencies, and unknown_service vikrantsingh.fyi. Failure is a scheduled job HTTP 503 against GitHub, which aligns with Reliability (CI/CD/observability). Sole listed open_incidents entry is CLOSED and not a duplicate match; duplicate_of left null. No trusted severity from title.\"}",
+  "raw_response": "{\n  \"audience\": \"internal\",\n  \"channel\": \"slack\",\n  \"subject\": \"TRIAGING: scheduled job failed 2x \u2014 HTTP 503 (GitHub)\",\n  \"body\": \"What we know: Scheduled job failed two consecutive runs with HTTP 503 from GitHub. Listed affected service: vikrantsingh.fyi. Priority Low. State: TRIAGING. Intake is labeled manual test / not a real outage. No CMDB primary CI, no dependency matches, no open duplicate incident.\\n\\nWhat we are doing: Continuing triage on the 503 responses and job run history. Checking whether failures are isolated to this job and confirming current GitHub reachability from the runner path.\\n\\nStill unknown: Root cause not established. Unclear if 503s are transient upstream, auth/rate-limit related, or local to our job config/runner. Scope beyond the two failed runs and any lasting impact on vikrantsingh.fyi still unconfirmed. No ETA until triage narrows cause.\",\n  \"tone\": \"direct, operational, no marketing\",\n  \"confidence\": 0.72,\n  \"expected_resolution_window\": null\n}",
+  "parsed_ok": true,
+  "parsed_output": {
+    "audience": "internal",
+    "channel": "slack",
+    "subject": "TRIAGING: scheduled job failed 2x \u2014 HTTP 503 (GitHub)",
+    "body": "What we know: Scheduled job failed two consecutive runs with HTTP 503 from GitHub. Listed affected service: vikrantsingh.fyi. Priority Low. State: TRIAGING. Intake is labeled manual test / not a real outage. No CMDB primary CI, no dependency matches, no open duplicate incident.\n\nWhat we are doing: Continuing triage on the 503 responses and job run history. Checking whether failures are isolated to this job and confirming current GitHub reachability from the runner path.\n\nStill unknown: Root cause not established. Unclear if 503s are transient upstream, auth/rate-limit related, or local to our job config/runner. Scope beyond the two failed runs and any lasting impact on vikrantsingh.fyi still unconfirmed. No ETA until triage narrows cause.",
+    "tone": "direct, operational, no marketing",
+    "expected_resolution_window": null,
+    "confidence": 0.72
+  },
+  "error": null,
+  "confidence": 0.72
+}

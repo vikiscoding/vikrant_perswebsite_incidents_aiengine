@@ -1,0 +1,43 @@
+{
+  "trace_id": "trc-9a25ca3bf04c",
+  "incident_id": "inc-d063a8dbabcf",
+  "purpose": "detection_gaps_triage",
+  "model": "grok-4.5",
+  "started_at": "2026-10-01T05:04:48.112065+00:00",
+  "ended_at": "2026-10-01T05:05:09.352272+00:00",
+  "latency_ms": 21240,
+  "prompt": "Find detection gaps: missing monitors, runbooks, CMDB links, or alerts that would have caught this earlier.\nEach gap MUST include a non-empty evidence string grounded in this incident. No evidence = do not include it.\nDo not repeat existing_gaps. Do not invent tools we do not have.\nsuggested_monitoring_or_runbook_change must be concrete.\nconfidence is required (0 to 1) for the batch.\n\n{\"title\": \"manual test: Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)\", \"state\": \"TRIAGING\", \"source\": \"alert\", \"affected_services\": [\"vikrantsingh.fyi\"], \"affected_ci_ids\": [], \"cmdb_snapshot\": {\"primary_ci_id\": null, \"matched\": [], \"dependencies\": [], \"dependencies_indirect\": [], \"used_by\": [], \"affected_ci_ids\": [], \"routing_hint\": null, \"unknown_service\": \"vikrantsingh.fyi\"}, \"triage\": {\"priority\": \"Low\", \"impact_score\": 5, \"affected_users_estimate\": 0, \"affected_services\": [\"vikrantsingh.fyi\"], \"category\": \"Test/False Positive\", \"routing_suggestion\": \"Reliability\", \"duplicate_of\": null, \"reasoning\": \"Intake is explicitly labeled manual test and not a real outage. CMDB has no primary CI, no matches, no dependencies, and unknown_service vikrantsingh.fyi. Failure is a scheduled job HTTP 503 against GitHub, which aligns with Reliability (CI/CD/observability). Sole listed open_incidents entry is CLOSED and not a duplicate match; duplicate_of left null. No trusted severity from title.\", \"confidence\": 0.85}, \"existing_gaps\": [], \"discovered_during\": \"triage\"}",
+  "raw_response": "{\n  \"gaps\": [\n    {\n      \"gap_description\": \"Service vikrantsingh.fyi has no CMDB CI, dependencies, or routing metadata, so ownership and blast radius cannot be resolved during triage.\",\n      \"evidence\": \"cmdb_snapshot.primary_ci_id is null, matched/dependencies/used_by are empty, affected_ci_ids is empty, unknown_service is \\\"vikrantsingh.fyi\\\", and routing_hint is null.\",\n      \"suggested_monitoring_or_runbook_change\": \"Create a CMDB CI for vikrantsingh.fyi (or map the alias to an existing CI), attach owner/team and dependency links, and set a routing_hint so triage does not land on unknown_service.\",\n      \"severity\": \"Medium\",\n      \"discovered_during\": \"triage\",\n      \"status\": \"proposed\"\n    },\n    {\n      \"gap_description\": \"No runbook or alert-suppression path for explicitly labeled manual-test / non-outage scheduled-job failures, so test noise still opens a full triage incident.\",\n      \"evidence\": \"title is \\\"manual test: Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)\\\"; triage.category is \\\"Test/False Positive\\\"; source is \\\"alert\\\"; state is TRIAGING with priority Low.\",\n      \"suggested_monitoring_or_runbook_change\": \"Add an intake runbook rule: if title/body contains \\\"manual test\\\" or \\\"not a real outage\\\", auto-tag Test/False Positive, suppress paging, and route to a low-priority reliability queue without full incident workflow.\",\n      \"severity\": \"Low\",\n      \"discovered_during\": \"triage\",\n      \"status\": \"proposed\"\n    },\n    {\n      \"gap_description\": \"Missing dedicated monitor/runbook linkage for repeated scheduled-job HTTP 503s against GitHub that would classify external dependency failure vs internal regression before human triage.\",\n      \"evidence\": \"title reports \\\"scheduled job failed 2 runs in a row: http 503 (github)\\\"; affected_services lists only \\\"vikrantsingh.fyi\\\"; triage.reasoning cites GitHub HTTP 503 and Reliability routing with no dependency CI matches.\",\n      \"suggested_monitoring_or_runbook_change\": \"Add a scheduled-job failure monitor that keys on consecutive run failures and HTTP 503 from github.com, annotates external-dependency, and links a short runbook step to check GitHub status before opening a service incident.\",\n      \"severity\": \"Medium\",\n      \"discovered_during\": \"triage\",\n      \"status\": \"proposed\"\n    }\n  ],\n  \"confidence\": 0.82\n}",
+  "parsed_ok": true,
+  "parsed_output": {
+    "gaps": [
+      {
+        "gap_description": "Service vikrantsingh.fyi has no CMDB CI, dependencies, or routing metadata, so ownership and blast radius cannot be resolved during triage.",
+        "evidence": "cmdb_snapshot.primary_ci_id is null, matched/dependencies/used_by are empty, affected_ci_ids is empty, unknown_service is \"vikrantsingh.fyi\", and routing_hint is null.",
+        "suggested_monitoring_or_runbook_change": "Create a CMDB CI for vikrantsingh.fyi (or map the alias to an existing CI), attach owner/team and dependency links, and set a routing_hint so triage does not land on unknown_service.",
+        "severity": "Medium",
+        "discovered_during": "triage",
+        "status": "proposed"
+      },
+      {
+        "gap_description": "No runbook or alert-suppression path for explicitly labeled manual-test / non-outage scheduled-job failures, so test noise still opens a full triage incident.",
+        "evidence": "title is \"manual test: Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)\"; triage.category is \"Test/False Positive\"; source is \"alert\"; state is TRIAGING with priority Low.",
+        "suggested_monitoring_or_runbook_change": "Add an intake runbook rule: if title/body contains \"manual test\" or \"not a real outage\", auto-tag Test/False Positive, suppress paging, and route to a low-priority reliability queue without full incident workflow.",
+        "severity": "Low",
+        "discovered_during": "triage",
+        "status": "proposed"
+      },
+      {
+        "gap_description": "Missing dedicated monitor/runbook linkage for repeated scheduled-job HTTP 503s against GitHub that would classify external dependency failure vs internal regression before human triage.",
+        "evidence": "title reports \"scheduled job failed 2 runs in a row: http 503 (github)\"; affected_services lists only \"vikrantsingh.fyi\"; triage.reasoning cites GitHub HTTP 503 and Reliability routing with no dependency CI matches.",
+        "suggested_monitoring_or_runbook_change": "Add a scheduled-job failure monitor that keys on consecutive run failures and HTTP 503 from github.com, annotates external-dependency, and links a short runbook step to check GitHub status before opening a service incident.",
+        "severity": "Medium",
+        "discovered_during": "triage",
+        "status": "proposed"
+      }
+    ],
+    "confidence": 0.82
+  },
+  "error": null,
+  "confidence": 0.82
+}

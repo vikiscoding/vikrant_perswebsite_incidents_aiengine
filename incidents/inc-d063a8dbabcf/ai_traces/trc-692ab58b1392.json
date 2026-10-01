@@ -1,0 +1,23 @@
+{
+  "trace_id": "trc-692ab58b1392",
+  "incident_id": "inc-d063a8dbabcf",
+  "purpose": "comms_ack_customers",
+  "model": "grok-4.5",
+  "started_at": "2026-10-01T05:04:27.299393+00:00",
+  "ended_at": "2026-10-01T05:04:36.347562+00:00",
+  "latency_ms": 9048,
+  "prompt": "Write the initial acknowledgment. Confirm we are aware, say what is affected, and set a cautious expectation. Do not promise a fix time you cannot know.\naudience=customers. tone=plain language, calm, no internal CI ids unless needed.\nReturn a CommunicationDraft. channel should be slack for internal, status_page for customers, email for leadership.\nconfidence is required (0 to 1). This is a draft only; it will not be sent.\n\n{\"kind\": \"ack\", \"audience\": \"customers\", \"title\": \"manual test: Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)\", \"state\": \"TRIAGING\", \"priority\": \"Low\", \"impact_score\": 5, \"affected_services\": [\"vikrantsingh.fyi\"], \"affected_ci_ids\": [], \"routing\": null, \"triage_reasoning\": \"Intake is explicitly labeled manual test and not a real outage. CMDB has no primary CI, no matches, no dependencies, and unknown_service vikrantsingh.fyi. Failure is a scheduled job HTTP 503 against GitHub, which aligns with Reliability (CI/CD/observability). Sole listed open_incidents entry is CLOSED and not a duplicate match; duplicate_of left null. No trusted severity from title.\"}",
+  "raw_response": "{\n  \"audience\": \"customers\",\n  \"channel\": \"status_page\",\n  \"subject\": \"We are looking into scheduled job errors on vikrantsingh.fyi\",\n  \"body\": \"We are aware of recent scheduled job failures tied to vikrantsingh.fyi (HTTP 503 responses from GitHub). The service may be affected while we investigate. We do not yet have a reliable timeline for a fix and will share updates as we know more. Thank you for your patience.\",\n  \"tone\": \"plain language, calm\",\n  \"confidence\": 0.75,\n  \"expected_resolution_window\": null\n}",
+  "parsed_ok": true,
+  "parsed_output": {
+    "audience": "customers",
+    "channel": "status_page",
+    "subject": "We are looking into scheduled job errors on vikrantsingh.fyi",
+    "body": "We are aware of recent scheduled job failures tied to vikrantsingh.fyi (HTTP 503 responses from GitHub). The service may be affected while we investigate. We do not yet have a reliable timeline for a fix and will share updates as we know more. Thank you for your patience.",
+    "tone": "plain language, calm",
+    "expected_resolution_window": null,
+    "confidence": 0.75
+  },
+  "error": null,
+  "confidence": 0.75
+}

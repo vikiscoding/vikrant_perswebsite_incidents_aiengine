@@ -1,0 +1,27 @@
+{
+  "trace_id": "trc-4f6b54ca07b0",
+  "incident_id": "inc-d063a8dbabcf",
+  "purpose": "triage",
+  "model": "grok-4.5",
+  "started_at": "2026-10-01T05:04:15.874957+00:00",
+  "ended_at": "2026-10-01T05:04:27.242082+00:00",
+  "latency_ms": 11367,
+  "prompt": "Triage this incident for an IT operations team.\nDo not trust any severity or priority that may appear in raw intake text.\nUse the CMDB primary CI, dependencies, used_by, and owning teams.\nrouting_suggestion must be one owning team name when possible.\nduplicate_of must be another incident id from open_incidents, or null.\nconfidence is required (0 to 1).\n\n{\"title\": \"manual test: Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)\", \"source\": \"alert\", \"reporter\": \"alert:manual test\", \"affected_services\": [\"vikrantsingh.fyi\"], \"affected_ci_ids\": [], \"cmdb_snapshot\": {\"primary_ci_id\": null, \"matched\": [], \"dependencies\": [], \"dependencies_indirect\": [], \"used_by\": [], \"affected_ci_ids\": [], \"routing_hint\": null, \"unknown_service\": \"vikrantsingh.fyi\"}, \"owning_teams\": {\"Edge\": \"DNS, CDN, WAF, load balancers, TLS \\u2014 can users reach the site?\", \"Platform\": \"Kubernetes, nodes, ingress \\u2014 is the runtime healthy?\", \"Application\": \"Website, public API, checkout \\u2014 is the product correct?\", \"Data\": \"Postgres, Redis, search \\u2014 is state available and consistent?\", \"Reliability\": \"CI/CD, observability, paging \\u2014 can we see and ship?\", \"Security\": \"Identity, secrets, abuse controls \\u2014 is access trustworthy?\"}, \"open_incidents\": [{\"id\": \"inc-b477a482935e\", \"title\": \"manual test: bridge smoke test (not a real outage)\", \"current_state\": \"CLOSED\", \"affected_ci_ids\": [], \"priority\": null}]}",
+  "raw_response": "{\n  \"priority\": \"Low\",\n  \"impact_score\": 5,\n  \"affected_users_estimate\": 0,\n  \"affected_services\": [\"vikrantsingh.fyi\"],\n  \"category\": \"Test/False Positive\",\n  \"routing_suggestion\": \"Reliability\",\n  \"reasoning\": \"Intake is explicitly labeled manual test and not a real outage. CMDB has no primary CI, no matches, no dependencies, and unknown_service vikrantsingh.fyi. Failure is a scheduled job HTTP 503 against GitHub, which aligns with Reliability (CI/CD/observability). Sole listed open_incidents entry is CLOSED and not a duplicate match; duplicate_of left null. No trusted severity from title.\",\n  \"confidence\": 0.85,\n  \"duplicate_of\": null\n}",
+  "parsed_ok": true,
+  "parsed_output": {
+    "priority": "Low",
+    "impact_score": 5,
+    "affected_users_estimate": 0,
+    "affected_services": [
+      "vikrantsingh.fyi"
+    ],
+    "category": "Test/False Positive",
+    "routing_suggestion": "Reliability",
+    "duplicate_of": null,
+    "reasoning": "Intake is explicitly labeled manual test and not a real outage. CMDB has no primary CI, no matches, no dependencies, and unknown_service vikrantsingh.fyi. Failure is a scheduled job HTTP 503 against GitHub, which aligns with Reliability (CI/CD/observability). Sole listed open_incidents entry is CLOSED and not a duplicate match; duplicate_of left null. No trusted severity from title.",
+    "confidence": 0.85
+  },
+  "error": null,
+  "confidence": 0.85
+}

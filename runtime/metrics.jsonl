@@ -13,3 +13,20 @@
 {"incident_id": "inc-b477a482935e", "metric": "state_dwell_ms", "value": 8, "labels": {"state": "ACKNOWLEDGED"}, "timestamp": "2026-10-01T04:31:44.881933+00:00", "actor": "human:vikiscoding"}
 {"incident_id": "inc-b477a482935e", "metric": "state_dwell_ms", "value": 26050, "labels": {"state": "ACTIVE"}, "timestamp": "2026-10-01T04:32:10.933831+00:00", "actor": "human:vikiscoding"}
 {"incident_id": "inc-b477a482935e", "metric": "state_dwell_ms", "value": 26706, "labels": {"state": "RESOLVED"}, "timestamp": "2026-10-01T04:32:37.640192+00:00", "actor": "human:vikiscoding"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "create_latency_ms", "value": 3, "labels": {}, "timestamp": "2026-10-01T05:04:15.831140+00:00", "actor": "service:vikrantsingh.fyi-heartbeat"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "state_dwell_ms", "value": 37, "labels": {"state": "DETECTED"}, "timestamp": "2026-10-01T05:04:15.866549+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "time_to_triage_ms", "value": 37, "labels": {}, "timestamp": "2026-10-01T05:04:15.870289+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "ai_call_latency_ms", "value": 11367, "labels": {"purpose": "triage"}, "timestamp": "2026-10-01T05:04:27.242459+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "ai_call_error", "value": 0, "labels": {"purpose": "triage"}, "timestamp": "2026-10-01T05:04:27.250284+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "ai_confidence", "value": 0.85, "labels": {"purpose": "triage"}, "timestamp": "2026-10-01T05:04:27.276956+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "duplicate_detected", "value": 0, "labels": {}, "timestamp": "2026-10-01T05:04:27.284995+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "ai_call_latency_ms", "value": 9048, "labels": {"purpose": "comms_ack_customers"}, "timestamp": "2026-10-01T05:04:36.347924+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "ai_call_error", "value": 0, "labels": {"purpose": "comms_ack_customers"}, "timestamp": "2026-10-01T05:04:36.353559+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "time_to_first_ack_draft_ms", "value": 20541, "labels": {"audience": "customers"}, "timestamp": "2026-10-01T05:04:36.368737+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "ai_call_latency_ms", "value": 11644, "labels": {"purpose": "comms_status_internal"}, "timestamp": "2026-10-01T05:04:48.044611+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "ai_call_error", "value": 0, "labels": {"purpose": "comms_status_internal"}, "timestamp": "2026-10-01T05:04:48.097683+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "ai_call_latency_ms", "value": 21240, "labels": {"purpose": "detection_gaps_triage"}, "timestamp": "2026-10-01T05:05:09.352647+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "ai_call_error", "value": 0, "labels": {"purpose": "detection_gaps_triage"}, "timestamp": "2026-10-01T05:05:09.358728+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "detection_gap_count", "value": 0, "labels": {"severity": "High"}, "timestamp": "2026-10-01T05:05:09.377158+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "detection_gap_count", "value": 2, "labels": {"severity": "Medium"}, "timestamp": "2026-10-01T05:05:09.384075+00:00", "actor": "ai:grok:grok-4.5"}
+{"incident_id": "inc-d063a8dbabcf", "metric": "detection_gap_count", "value": 1, "labels": {"severity": "Low"}, "timestamp": "2026-10-01T05:05:09.391887+00:00", "actor": "ai:grok:grok-4.5"}

@@ -1,0 +1,719 @@
+{
+  "id": "inc-d063a8dbabcf",
+  "title": "manual test: Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)",
+  "current_state": "TRIAGING",
+  "created_at": "2026-10-01T05:04:15.827342Z",
+  "updated_at": "2026-10-01T05:05:09.391887Z",
+  "priority": "Low",
+  "impact_score": 5,
+  "reporter": "alert:manual test",
+  "source": "alert",
+  "affected_services": [
+    "vikrantsingh.fyi"
+  ],
+  "affected_ci_ids": [],
+  "cmdb_snapshot": {
+    "primary_ci_id": null,
+    "matched": [],
+    "dependencies": [],
+    "dependencies_indirect": [],
+    "used_by": [],
+    "affected_ci_ids": [],
+    "routing_hint": null,
+    "unknown_service": "vikrantsingh.fyi"
+  },
+  "related_incidents": [],
+  "recent_changes": [],
+  "timeline": [
+    {
+      "id": "evt-955f902572ba",
+      "timestamp": "2026-10-01T05:04:15.827342Z",
+      "actor": "service:vikrantsingh.fyi-heartbeat",
+      "event_type": "incident_created",
+      "from_state": null,
+      "to_state": "DETECTED",
+      "reasoning": "incident created from alert",
+      "confidence": null,
+      "artifacts": [
+        "raw_inputs/intake.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "id": "inc-d063a8dbabcf",
+        "title": "manual test: Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)",
+        "current_state": "DETECTED",
+        "created_at": "2026-10-01T05:04:15.827342Z",
+        "updated_at": "2026-10-01T05:04:15.827342Z",
+        "priority": null,
+        "impact_score": null,
+        "reporter": "alert:manual test",
+        "source": "alert",
+        "affected_services": [
+          "vikrantsingh.fyi"
+        ],
+        "affected_ci_ids": [],
+        "cmdb_snapshot": {
+          "primary_ci_id": null,
+          "matched": [],
+          "dependencies": [],
+          "dependencies_indirect": [],
+          "used_by": [],
+          "affected_ci_ids": [],
+          "routing_hint": null,
+          "unknown_service": "vikrantsingh.fyi"
+        },
+        "related_incidents": [],
+        "recent_changes": [],
+        "timeline": [],
+        "communications": [],
+        "detection_gaps": [],
+        "ai_triage": null,
+        "resolution_notes": null,
+        "postmortem_draft": null,
+        "assigned_to": null,
+        "support_group": null
+      }
+    },
+    {
+      "id": "evt-85fbf73fc770",
+      "timestamp": "2026-10-01T05:04:15.831140Z",
+      "actor": "service:vikrantsingh.fyi-heartbeat",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric create_latency_ms=3",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "create_latency_ms",
+        "value": 3,
+        "labels": {}
+      }
+    },
+    {
+      "id": "evt-e4414c4271fb",
+      "timestamp": "2026-10-01T05:04:15.864878Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "state_transition",
+      "from_state": "DETECTED",
+      "to_state": "TRIAGING",
+      "reasoning": "begin AI triage",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": null
+    },
+    {
+      "id": "evt-14cbfafcb9ea",
+      "timestamp": "2026-10-01T05:04:15.866549Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric state_dwell_ms=37",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "state_dwell_ms",
+        "value": 37,
+        "labels": {
+          "state": "DETECTED"
+        }
+      }
+    },
+    {
+      "id": "evt-697aaac10f7f",
+      "timestamp": "2026-10-01T05:04:15.870289Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric time_to_triage_ms=37",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "time_to_triage_ms",
+        "value": 37,
+        "labels": {}
+      }
+    },
+    {
+      "id": "evt-109c50334f40",
+      "timestamp": "2026-10-01T05:04:27.242459Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_latency_ms=11367",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_latency_ms",
+        "value": 11367,
+        "labels": {
+          "purpose": "triage"
+        }
+      }
+    },
+    {
+      "id": "evt-9ffe7ba0db1a",
+      "timestamp": "2026-10-01T05:04:27.250284Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_error=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_error",
+        "value": 0,
+        "labels": {
+          "purpose": "triage"
+        }
+      }
+    },
+    {
+      "id": "evt-91f474024b07",
+      "timestamp": "2026-10-01T05:04:27.257984Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_call",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "triage",
+      "confidence": 0.85,
+      "artifacts": [
+        "ai_traces/trc-4f6b54ca07b0.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "parsed_ok": true,
+        "error": null,
+        "trace_id": "trc-4f6b54ca07b0"
+      }
+    },
+    {
+      "id": "evt-14916ff07763",
+      "timestamp": "2026-10-01T05:04:27.267107Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_triage_proposed",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "Intake is explicitly labeled manual test and not a real outage. CMDB has no primary CI, no matches, no dependencies, and unknown_service vikrantsingh.fyi. Failure is a scheduled job HTTP 503 against GitHub, which aligns with Reliability (CI/CD/observability). Sole listed open_incidents entry is CLOSED and not a duplicate match; duplicate_of left null. No trusted severity from title.",
+      "confidence": 0.85,
+      "artifacts": [
+        "ai_traces/trc-4f6b54ca07b0.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "triage": {
+          "priority": "Low",
+          "impact_score": 5,
+          "affected_users_estimate": 0,
+          "affected_services": [
+            "vikrantsingh.fyi"
+          ],
+          "category": "Test/False Positive",
+          "routing_suggestion": "Reliability",
+          "duplicate_of": null,
+          "reasoning": "Intake is explicitly labeled manual test and not a real outage. CMDB has no primary CI, no matches, no dependencies, and unknown_service vikrantsingh.fyi. Failure is a scheduled job HTTP 503 against GitHub, which aligns with Reliability (CI/CD/observability). Sole listed open_incidents entry is CLOSED and not a duplicate match; duplicate_of left null. No trusted severity from title.",
+          "confidence": 0.85
+        },
+        "requires_approval": false
+      }
+    },
+    {
+      "id": "evt-9d947d676cb1",
+      "timestamp": "2026-10-01T05:04:27.276956Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_confidence=0.85",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_confidence",
+        "value": 0.85,
+        "labels": {
+          "purpose": "triage"
+        }
+      }
+    },
+    {
+      "id": "evt-67febeda0379",
+      "timestamp": "2026-10-01T05:04:27.284995Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric duplicate_detected=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "duplicate_detected",
+        "value": 0,
+        "labels": {}
+      }
+    },
+    {
+      "id": "evt-14f9d18ac165",
+      "timestamp": "2026-10-01T05:04:27.293222Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "triage_applied",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "auto-applied Low/Medium triage under policy",
+      "confidence": 0.85,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "priority": "Low",
+        "impact_score": 5,
+        "duplicate_of": null,
+        "policy": "auto_low_medium"
+      }
+    },
+    {
+      "id": "evt-879887916d6d",
+      "timestamp": "2026-10-01T05:04:36.347924Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_latency_ms=9048",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_latency_ms",
+        "value": 9048,
+        "labels": {
+          "purpose": "comms_ack_customers"
+        }
+      }
+    },
+    {
+      "id": "evt-5ef56c4bf7d6",
+      "timestamp": "2026-10-01T05:04:36.353559Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_error=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_error",
+        "value": 0,
+        "labels": {
+          "purpose": "comms_ack_customers"
+        }
+      }
+    },
+    {
+      "id": "evt-ededaa22721a",
+      "timestamp": "2026-10-01T05:04:36.358007Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_call",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "comms_ack_customers",
+      "confidence": 0.75,
+      "artifacts": [
+        "ai_traces/trc-692ab58b1392.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "parsed_ok": true,
+        "error": null,
+        "trace_id": "trc-692ab58b1392"
+      }
+    },
+    {
+      "id": "evt-8898059515a1",
+      "timestamp": "2026-10-01T05:04:36.362969Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "communication_drafted",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "ack draft for customers",
+      "confidence": 0.75,
+      "artifacts": [
+        "ai_traces/trc-692ab58b1392.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "kind": "ack",
+        "draft": {
+          "audience": "customers",
+          "channel": "status_page",
+          "subject": "We are looking into scheduled job errors on vikrantsingh.fyi",
+          "body": "We are aware of recent scheduled job failures tied to vikrantsingh.fyi (HTTP 503 responses from GitHub). The service may be affected while we investigate. We do not yet have a reliable timeline for a fix and will share updates as we know more. Thank you for your patience.",
+          "tone": "plain language, calm",
+          "expected_resolution_window": null,
+          "confidence": 0.75
+        },
+        "sent": false
+      }
+    },
+    {
+      "id": "evt-090eca13633c",
+      "timestamp": "2026-10-01T05:04:36.368737Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric time_to_first_ack_draft_ms=20541",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "time_to_first_ack_draft_ms",
+        "value": 20541,
+        "labels": {
+          "audience": "customers"
+        }
+      }
+    },
+    {
+      "id": "evt-eafea4906804",
+      "timestamp": "2026-10-01T05:04:48.044611Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_latency_ms=11644",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_latency_ms",
+        "value": 11644,
+        "labels": {
+          "purpose": "comms_status_internal"
+        }
+      }
+    },
+    {
+      "id": "evt-bf356bb3ef65",
+      "timestamp": "2026-10-01T05:04:48.097683Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_error=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_error",
+        "value": 0,
+        "labels": {
+          "purpose": "comms_status_internal"
+        }
+      }
+    },
+    {
+      "id": "evt-759204f8b717",
+      "timestamp": "2026-10-01T05:04:48.102236Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_call",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "comms_status_internal",
+      "confidence": 0.72,
+      "artifacts": [
+        "ai_traces/trc-203882d87c1b.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "parsed_ok": true,
+        "error": null,
+        "trace_id": "trc-203882d87c1b"
+      }
+    },
+    {
+      "id": "evt-99002bfa0478",
+      "timestamp": "2026-10-01T05:04:48.106415Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "communication_drafted",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "status draft for internal",
+      "confidence": 0.72,
+      "artifacts": [
+        "ai_traces/trc-203882d87c1b.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "kind": "status",
+        "draft": {
+          "audience": "internal",
+          "channel": "slack",
+          "subject": "TRIAGING: scheduled job failed 2x — HTTP 503 (GitHub)",
+          "body": "What we know: Scheduled job failed two consecutive runs with HTTP 503 from GitHub. Listed affected service: vikrantsingh.fyi. Priority Low. State: TRIAGING. Intake is labeled manual test / not a real outage. No CMDB primary CI, no dependency matches, no open duplicate incident.\n\nWhat we are doing: Continuing triage on the 503 responses and job run history. Checking whether failures are isolated to this job and confirming current GitHub reachability from the runner path.\n\nStill unknown: Root cause not established. Unclear if 503s are transient upstream, auth/rate-limit related, or local to our job config/runner. Scope beyond the two failed runs and any lasting impact on vikrantsingh.fyi still unconfirmed. No ETA until triage narrows cause.",
+          "tone": "direct, operational, no marketing",
+          "expected_resolution_window": null,
+          "confidence": 0.72
+        },
+        "sent": false
+      }
+    },
+    {
+      "id": "evt-da75564a5e64",
+      "timestamp": "2026-10-01T05:05:09.352647Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_latency_ms=21240",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_latency_ms",
+        "value": 21240,
+        "labels": {
+          "purpose": "detection_gaps_triage"
+        }
+      }
+    },
+    {
+      "id": "evt-8cdf9da72458",
+      "timestamp": "2026-10-01T05:05:09.358728Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_error=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_error",
+        "value": 0,
+        "labels": {
+          "purpose": "detection_gaps_triage"
+        }
+      }
+    },
+    {
+      "id": "evt-79aae0e7c224",
+      "timestamp": "2026-10-01T05:05:09.364066Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_call",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "detection_gaps_triage",
+      "confidence": 0.82,
+      "artifacts": [
+        "ai_traces/trc-9a25ca3bf04c.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "parsed_ok": true,
+        "error": null,
+        "trace_id": "trc-9a25ca3bf04c"
+      }
+    },
+    {
+      "id": "evt-541b55fd5309",
+      "timestamp": "2026-10-01T05:05:09.369004Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "detection_gaps_proposed",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "proposed 3 detection gap(s)",
+      "confidence": 0.82,
+      "artifacts": [
+        "ai_traces/trc-9a25ca3bf04c.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "gaps": [
+          {
+            "gap_description": "Service vikrantsingh.fyi has no CMDB CI, dependencies, or routing metadata, so ownership and blast radius cannot be resolved during triage.",
+            "evidence": "cmdb_snapshot.primary_ci_id is null, matched/dependencies/used_by are empty, affected_ci_ids is empty, unknown_service is \"vikrantsingh.fyi\", and routing_hint is null.",
+            "suggested_monitoring_or_runbook_change": "Create a CMDB CI for vikrantsingh.fyi (or map the alias to an existing CI), attach owner/team and dependency links, and set a routing_hint so triage does not land on unknown_service.",
+            "severity": "Medium",
+            "discovered_during": "triage",
+            "status": "proposed"
+          },
+          {
+            "gap_description": "No runbook or alert-suppression path for explicitly labeled manual-test / non-outage scheduled-job failures, so test noise still opens a full triage incident.",
+            "evidence": "title is \"manual test: Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)\"; triage.category is \"Test/False Positive\"; source is \"alert\"; state is TRIAGING with priority Low.",
+            "suggested_monitoring_or_runbook_change": "Add an intake runbook rule: if title/body contains \"manual test\" or \"not a real outage\", auto-tag Test/False Positive, suppress paging, and route to a low-priority reliability queue without full incident workflow.",
+            "severity": "Low",
+            "discovered_during": "triage",
+            "status": "proposed"
+          },
+          {
+            "gap_description": "Missing dedicated monitor/runbook linkage for repeated scheduled-job HTTP 503s against GitHub that would classify external dependency failure vs internal regression before human triage.",
+            "evidence": "title reports \"scheduled job failed 2 runs in a row: http 503 (github)\"; affected_services lists only \"vikrantsingh.fyi\"; triage.reasoning cites GitHub HTTP 503 and Reliability routing with no dependency CI matches.",
+            "suggested_monitoring_or_runbook_change": "Add a scheduled-job failure monitor that keys on consecutive run failures and HTTP 503 from github.com, annotates external-dependency, and links a short runbook step to check GitHub status before opening a service incident.",
+            "severity": "Medium",
+            "discovered_during": "triage",
+            "status": "proposed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "evt-80cc9cfb679b",
+      "timestamp": "2026-10-01T05:05:09.377158Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric detection_gap_count=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "detection_gap_count",
+        "value": 0,
+        "labels": {
+          "severity": "High"
+        }
+      }
+    },
+    {
+      "id": "evt-151dc83c6a49",
+      "timestamp": "2026-10-01T05:05:09.384075Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric detection_gap_count=2",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "detection_gap_count",
+        "value": 2,
+        "labels": {
+          "severity": "Medium"
+        }
+      }
+    },
+    {
+      "id": "evt-9cbd74ae41ef",
+      "timestamp": "2026-10-01T05:05:09.391887Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric detection_gap_count=1",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "detection_gap_count",
+        "value": 1,
+        "labels": {
+          "severity": "Low"
+        }
+      }
+    }
+  ],
+  "communications": [
+    {
+      "audience": "customers",
+      "channel": "status_page",
+      "subject": "We are looking into scheduled job errors on vikrantsingh.fyi",
+      "body": "We are aware of recent scheduled job failures tied to vikrantsingh.fyi (HTTP 503 responses from GitHub). The service may be affected while we investigate. We do not yet have a reliable timeline for a fix and will share updates as we know more. Thank you for your patience.",
+      "tone": "plain language, calm",
+      "expected_resolution_window": null,
+      "confidence": 0.75
+    },
+    {
+      "audience": "internal",
+      "channel": "slack",
+      "subject": "TRIAGING: scheduled job failed 2x — HTTP 503 (GitHub)",
+      "body": "What we know: Scheduled job failed two consecutive runs with HTTP 503 from GitHub. Listed affected service: vikrantsingh.fyi. Priority Low. State: TRIAGING. Intake is labeled manual test / not a real outage. No CMDB primary CI, no dependency matches, no open duplicate incident.\n\nWhat we are doing: Continuing triage on the 503 responses and job run history. Checking whether failures are isolated to this job and confirming current GitHub reachability from the runner path.\n\nStill unknown: Root cause not established. Unclear if 503s are transient upstream, auth/rate-limit related, or local to our job config/runner. Scope beyond the two failed runs and any lasting impact on vikrantsingh.fyi still unconfirmed. No ETA until triage narrows cause.",
+      "tone": "direct, operational, no marketing",
+      "expected_resolution_window": null,
+      "confidence": 0.72
+    }
+  ],
+  "detection_gaps": [
+    {
+      "gap_description": "Service vikrantsingh.fyi has no CMDB CI, dependencies, or routing metadata, so ownership and blast radius cannot be resolved during triage.",
+      "evidence": "cmdb_snapshot.primary_ci_id is null, matched/dependencies/used_by are empty, affected_ci_ids is empty, unknown_service is \"vikrantsingh.fyi\", and routing_hint is null.",
+      "suggested_monitoring_or_runbook_change": "Create a CMDB CI for vikrantsingh.fyi (or map the alias to an existing CI), attach owner/team and dependency links, and set a routing_hint so triage does not land on unknown_service.",
+      "severity": "Medium",
+      "discovered_during": "triage",
+      "status": "proposed"
+    },
+    {
+      "gap_description": "No runbook or alert-suppression path for explicitly labeled manual-test / non-outage scheduled-job failures, so test noise still opens a full triage incident.",
+      "evidence": "title is \"manual test: Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)\"; triage.category is \"Test/False Positive\"; source is \"alert\"; state is TRIAGING with priority Low.",
+      "suggested_monitoring_or_runbook_change": "Add an intake runbook rule: if title/body contains \"manual test\" or \"not a real outage\", auto-tag Test/False Positive, suppress paging, and route to a low-priority reliability queue without full incident workflow.",
+      "severity": "Low",
+      "discovered_during": "triage",
+      "status": "proposed"
+    },
+    {
+      "gap_description": "Missing dedicated monitor/runbook linkage for repeated scheduled-job HTTP 503s against GitHub that would classify external dependency failure vs internal regression before human triage.",
+      "evidence": "title reports \"scheduled job failed 2 runs in a row: http 503 (github)\"; affected_services lists only \"vikrantsingh.fyi\"; triage.reasoning cites GitHub HTTP 503 and Reliability routing with no dependency CI matches.",
+      "suggested_monitoring_or_runbook_change": "Add a scheduled-job failure monitor that keys on consecutive run failures and HTTP 503 from github.com, annotates external-dependency, and links a short runbook step to check GitHub status before opening a service incident.",
+      "severity": "Medium",
+      "discovered_during": "triage",
+      "status": "proposed"
+    }
+  ],
+  "ai_triage": {
+    "priority": "Low",
+    "impact_score": 5,
+    "affected_users_estimate": 0,
+    "affected_services": [
+      "vikrantsingh.fyi"
+    ],
+    "category": "Test/False Positive",
+    "routing_suggestion": "Reliability",
+    "duplicate_of": null,
+    "reasoning": "Intake is explicitly labeled manual test and not a real outage. CMDB has no primary CI, no matches, no dependencies, and unknown_service vikrantsingh.fyi. Failure is a scheduled job HTTP 503 against GitHub, which aligns with Reliability (CI/CD/observability). Sole listed open_incidents entry is CLOSED and not a duplicate match; duplicate_of left null. No trusted severity from title.",
+    "confidence": 0.85
+  },
+  "resolution_notes": null,
+  "postmortem_draft": null,
+  "assigned_to": null,
+  "support_group": null
+}

@@ -1,0 +1,6 @@
+{
+  "monitor": "manual test",
+  "service": "vikrantsingh.fyi",
+  "message": "Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)",
+  "fired_at": "2026-10-01T05:04:15+00:00"
+}
