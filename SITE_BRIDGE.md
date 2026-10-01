@@ -19,6 +19,7 @@ the site reads feed.json (public raw URL) into its "Incident desk" on /reliabili
 ## Design rules
 
 - **One short run per lifecycle step.** No long-running process. The incident lives in the store, not in a job; that is the agent's "the folder is the ticket" rule.
+- **The feed is derived, never the record.** Per incident it carries the gate, labelled with the rule in force when it was triaged (an auto-apply before the live desk's no-auto-apply rule of 1 Oct 2026 reads as history; one after it reads as a breach), and the owner's latest `/note`. Regenerating `feed.json` never touches `incidents.db` or `incidents/`.
 - **The store is the `incident-data` branch** (`incidents.db`, `incidents/<id>/`, `issues.json`, `site_state.json`, `feed.json`). Every run checks it out, applies one step and commits. Runs share one concurrency group, so they never overlap. Git history is the backup and the audit trail.
 - **`service:<name>` actors may only ingest** (`models.SERVICE_EVENT_TYPES`). They can never transition, approve or hand off; those keep `validate_actor`. Tested in `tests/test_service_actor.py`.
 - **Only the owner's comments run commands**, enforced in the workflow `if:` and again in `site_bridge.py`. The comment text reaches Python only through an env var, never a shell line.
