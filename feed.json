@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T05:30:30+00:00",
+  "generated_at": "2026-10-01T05:40:36+00:00",
   "repo": "vikiscoding/vikrant_perswebsite_incidents_aiengine",
   "incidents": [
     {
@@ -17,7 +17,7 @@
       "gate": "auto-applied (low risk, high confidence)",
       "drafts_unsent": 2,
       "gaps": 3,
-      "recovered_at": null,
+      "recovered_at": "2026-10-01T05:40:15.780Z",
       "issue_url": "https://github.com/vikiscoding/vikrant_perswebsite_incidents_aiengine/issues/2",
       "timeline": [
         {
