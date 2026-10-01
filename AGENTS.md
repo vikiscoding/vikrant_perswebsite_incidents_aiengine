@@ -2,11 +2,13 @@
 
 ## Mission
 
-Build a production-grade, **AI-native Incident Management Operating System** that delivers ITIL 4-aligned outcomes at dramatically higher speed, consistency, and learning velocity than traditional processes.
+**Long-term aim:** an incident management system that delivers ITIL 4-aligned outcomes faster and more consistently than human-only processes, with people in authority on every decision that matters.
+
+**Today:** a working incident record and triage agent for one operator, live on one small site. Build toward the aim one verified slice at a time; never describe the aim as if it were shipped.
 
 The system owns the single source of truth for every incident, drives the full lifecycle (Detection → Identification → Triage → Investigation → Mitigation → Resolution → Closure + Continuous Learning), automates the maximum possible cognitive load and coordination work using Grok, and keeps humans in clear authority on high-stakes decisions.
 
-It turns every incident into compounding organizational intelligence by maintaining perfect memory, performing real-time detection gap analysis, and systematically closing the feedback loops that almost always break in human-only processes (alert fatigue, lost context, late or missing postmortems, knowledge staying in people’s heads).
+It should keep a complete record of every incident, flag detection gaps as the incident unfolds, and close the feedback loops that usually break in human-only processes (alert fatigue, lost context, late or missing postmortems, knowledge staying in people’s heads).
 
 We deliberately build a **verifiable core first**: a clean state machine + persistent memory + real-time reasoning layer. Specialist agent capabilities (parallel hypothesis investigation, automated mitigation suggestions, etc.) are added only after the foundation is reliable, auditable, and demonstrably valuable on real incidents.
 
@@ -75,9 +77,9 @@ Success metrics (Phase 1 and beyond):
 
 ## Important Context
 
-This project began as a broad multi-agent vision and was correctly narrowed to a high-quality Postmortem Agent to achieve technical reliability and quick wins. The new scope is the logical, higher-leverage evolution: the full AI-native operating system for incident management, with the same ruthless discipline around verifiability, evaluation, simplicity, and dogfooding.
+This project began as a broad multi-agent vision and was correctly narrowed to a high-quality Postmortem Agent to achieve technical reliability and quick wins. The current scope widens that to the incident lifecycle, with the same discipline around verifiability, evaluation, simplicity, and dogfooding.
 
-We are building something that almost no organization has today — a tireless, high-agency, perfectly consistent “Incident Staff” that never fatigues, never forgets, and turns every incident into automatic, compounding improvement. The unfair advantage is the combination of Grok reasoning + a verifiable state machine + honest logs on actual incidents.
+The differentiator is the combination, not any one part: model reasoning, a verifiable state machine, a human gate, and honest logs on real incidents.
 
 We stay narrow within each phase, ship working slices that deliver obvious value, measure ruthlessly, and only expand when the current foundation is solid. The goal is a system that is technically sound, operationally credible, and genuinely useful for one of the highest-pain, highest-leverage processes in any technology organization.
 

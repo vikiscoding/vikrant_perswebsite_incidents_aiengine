@@ -1,3 +1,4 @@
+import os
 import json
 import uuid
 from dataclasses import dataclass
@@ -40,6 +41,10 @@ def _event(actor: str, event_type: str, reasoning: str, **kwargs) -> IncidentEve
 
 
 def _needs_approval(proposal: TriageResult) -> bool:
+    # The live desk behind vikrantsingh.fyi sets TRIAGE_AUTO_APPLY=off: the model may never set priority on its
+    # own there, not even Low (a confident downgrade is the failure that matters). Eval and tests keep the default.
+    if os.environ.get("TRIAGE_AUTO_APPLY", "on").lower() == "off":
+        return True
     if proposal.priority in GATED_PRIORITIES:
         return True
     return proposal.confidence < AUTO_APPLY_MIN_CONFIDENCE

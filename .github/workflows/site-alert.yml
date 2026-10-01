@@ -56,6 +56,7 @@ jobs:
         id: bridge
         env:
           XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          TRIAGE_AUTO_APPLY: "off"  # live desk: every AI priority waits for the owner's /approve
           MODE: ${{ (github.event.action == 'site_recovered' || inputs.kind == 'site_recovered') && 'recovered' || 'alert' }}
         run: |
           export ALERT_PAYLOAD="$(cat payload.json)"

@@ -2,11 +2,9 @@
 
 > **Live:** this repo runs the incident desk behind [vikrantsingh.fyi](https://vikrantsingh.fyi/reliability/): real site alerts, AI-proposed triage, human-gated lifecycle in GitHub Issues. See [SITE_BRIDGE.md](SITE_BRIDGE.md). Imported fresh from `itsm-incident-mgmt-agent@895b805` (code only, no incident data).
 
-**An AI-native Incident Management Operating System that follows ITIL 4 outcomes while automating the maximum possible cognitive load, coordination, and organizational learning.**
+An incident triage agent with a human gate. An alert comes in and is stored as a folder that *is* the ticket; the model proposes priority, routing and draft updates; a person decides every step that matters; and every model call is traced. If the model is down, the ticket still exists and a person finishes the job.
 
-Most organizations still run incident management the way they did 15 years ago — noisy alerts, lost context on handoffs, late or nonexistent postmortems, and knowledge that lives only in people's heads. The result is high cognitive load, repeated failures, and slow organizational improvement.
-
-This project builds a production-grade system that acts as a tireless, high-agency "Incident Staff" — maintaining perfect memory, driving the full lifecycle, surfacing signal instead of noise, and turning every incident into compounding intelligence.
+Today it is a working incident record for one operator, not a production incident platform. It handles the real alerts of one small site ([live](https://vikrantsingh.fyi/reliability/#incident-desk)), and on that live desk the model never sets priority on its own: every proposal waits for a human `/approve`. Paging never depends on the model; it comes from an outside probe on the site's SLO.
 
 ## Current Focus: Phase 1 — The Verifiable Incident Brain
 

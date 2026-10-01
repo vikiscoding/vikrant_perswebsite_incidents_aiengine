@@ -102,7 +102,7 @@ def open_incident_for(store: Store, alert: dict):
 
 def issue_body(incident) -> str:
     t = incident.ai_triage
-    lines = [f"**Incident** `{incident.id}` · state **{incident.current_state.value}** · opened {incident.created_at.isoformat(timespec='seconds')}", ""]
+    lines = [f"**Incident** `{incident.id}` · state at intake **{incident.current_state.value}** (the current state is in the latest reply below) · opened {incident.created_at.isoformat(timespec='seconds')}", ""]
     lines.append(f"**Alert:** {incident.title}")
     lines.append(f"**Ingested by:** `{SERVICE_ACTOR}` (machine intake; it can never move or approve this incident)")
     lines.append("")

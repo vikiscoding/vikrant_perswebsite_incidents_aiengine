@@ -157,3 +157,16 @@ def test_intake_severity_is_not_copied(tmp_path):
     assert created.priority is None
     outcome = run_triage(store, _grok(store, _proposal(priority="Low")), created.id)
     assert outcome.incident.priority == "Low"
+
+
+
+def test_live_desk_never_auto_applies_even_low(monkeypatch):
+    """TRIAGE_AUTO_APPLY=off (the live desk): a confident Low still waits for a human."""
+    from models import TriageResult
+    from triage import _needs_approval
+
+    low = TriageResult.model_construct(priority="Low", confidence=0.95)
+    monkeypatch.delenv("TRIAGE_AUTO_APPLY", raising=False)
+    assert _needs_approval(low) is False  # default (eval, tests): Low at high confidence auto-applies
+    monkeypatch.setenv("TRIAGE_AUTO_APPLY", "off")
+    assert _needs_approval(low) is True  # live desk: never
