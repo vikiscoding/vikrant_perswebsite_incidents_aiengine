@@ -1,9 +1,9 @@
 {
   "id": "inc-e09cc8da45f6",
   "title": "vikrantsingh.fyi heartbeat: Scheduled job failed 2 runs in a row: injected 503 (github) (game day: github_5xx)",
-  "current_state": "TRIAGING",
+  "current_state": "ACTIVE",
   "created_at": "2026-10-02T04:50:49.561111Z",
-  "updated_at": "2026-10-02T05:15:44.567293Z",
+  "updated_at": "2026-10-02T05:18:11.614914Z",
   "priority": "Low",
   "impact_score": 15,
   "reporter": "alert:vikrantsingh.fyi heartbeat",
@@ -822,6 +822,74 @@
         "metric": "approval_wait_ms",
         "value": 1482665,
         "labels": {}
+      }
+    },
+    {
+      "id": "evt-f666bbea562d",
+      "timestamp": "2026-10-02T05:18:11.602235Z",
+      "actor": "human:vikiscoding",
+      "event_type": "state_transition",
+      "from_state": "TRIAGING",
+      "to_state": "ACKNOWLEDGED",
+      "reasoning": "acknowledged (via GitHub issue #3)",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": null
+    },
+    {
+      "id": "evt-2c418bd05cdc",
+      "timestamp": "2026-10-02T05:18:11.604646Z",
+      "actor": "human:vikiscoding",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric state_dwell_ms=1642005",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "state_dwell_ms",
+        "value": 1642005,
+        "labels": {
+          "state": "TRIAGING"
+        }
+      }
+    },
+    {
+      "id": "evt-6ac84868ce28",
+      "timestamp": "2026-10-02T05:18:11.613787Z",
+      "actor": "human:vikiscoding",
+      "event_type": "state_transition",
+      "from_state": "ACKNOWLEDGED",
+      "to_state": "ACTIVE",
+      "reasoning": "work started (via GitHub issue #3)",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": null
+    },
+    {
+      "id": "evt-2e372787e7cc",
+      "timestamp": "2026-10-02T05:18:11.614914Z",
+      "actor": "human:vikiscoding",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric state_dwell_ms=11",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "state_dwell_ms",
+        "value": 11,
+        "labels": {
+          "state": "ACKNOWLEDGED"
+        }
       }
     }
   ],

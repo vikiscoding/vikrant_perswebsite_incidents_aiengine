@@ -52,3 +52,5 @@
 {"incident_id": "inc-e09cc8da45f6", "metric": "detection_gap_count", "value": 2, "labels": {"severity": "Medium"}, "timestamp": "2026-10-02T04:51:46.667313+00:00", "actor": "ai:grok:grok-4.5"}
 {"incident_id": "inc-e09cc8da45f6", "metric": "detection_gap_count", "value": 1, "labels": {"severity": "Low"}, "timestamp": "2026-10-02T04:51:46.671000+00:00", "actor": "ai:grok:grok-4.5"}
 {"incident_id": "inc-e09cc8da45f6", "metric": "approval_wait_ms", "value": 1482665, "labels": {}, "timestamp": "2026-10-02T05:15:44.567293+00:00", "actor": "human:vikiscoding"}
+{"incident_id": "inc-e09cc8da45f6", "metric": "state_dwell_ms", "value": 1642005, "labels": {"state": "TRIAGING"}, "timestamp": "2026-10-02T05:18:11.604646+00:00", "actor": "human:vikiscoding"}
+{"incident_id": "inc-e09cc8da45f6", "metric": "state_dwell_ms", "value": 11, "labels": {"state": "ACKNOWLEDGED"}, "timestamp": "2026-10-02T05:18:11.614914+00:00", "actor": "human:vikiscoding"}
