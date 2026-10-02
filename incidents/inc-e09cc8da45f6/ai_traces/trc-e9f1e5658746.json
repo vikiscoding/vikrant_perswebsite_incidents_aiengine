@@ -1,0 +1,23 @@
+{
+  "trace_id": "trc-e9f1e5658746",
+  "incident_id": "inc-e09cc8da45f6",
+  "purpose": "comms_ack_customers",
+  "model": "grok-4.5",
+  "started_at": "2026-10-02T04:51:01.917154+00:00",
+  "ended_at": "2026-10-02T04:51:09.663469+00:00",
+  "latency_ms": 7746,
+  "prompt": "Write the initial acknowledgment. Confirm we are aware, say what is affected, and set a cautious expectation. Do not promise a fix time you cannot know.\naudience=customers. tone=plain language, calm, no internal CI ids unless needed.\nReturn a CommunicationDraft. channel should be slack for internal, status_page for customers, email for leadership.\nconfidence is required (0 to 1). This is a draft only; it will not be sent.\n\n{\"kind\": \"ack\", \"audience\": \"customers\", \"title\": \"vikrantsingh.fyi heartbeat: Scheduled job failed 2 runs in a row: injected 503 (github) (game day: github_5xx)\", \"state\": \"TRIAGING\", \"priority\": null, \"impact_score\": null, \"affected_services\": [\"vikrantsingh.fyi\"], \"affected_ci_ids\": [\"CI-SITE-001\", \"CI-SITE-002\", \"CI-SITE-003\", \"CI-SITE-004\"], \"routing\": \"Application\", \"triage_reasoning\": \"CMDB primary CI CI-SITE-001 is a Medium-criticality personal static site that degrades open; heartbeat failure does not take pages down. Failing component is CI-SITE-002 (site-heartbeat) owned by Reliability, with injected GitHub 503 (game day) on external CI-SITE-003. used_by is empty so user impact is negligible. Open incidents are CLOSED and not duplicates. Route to Reliability as owner of the heartbeat job and GitHub dependency.\"}",
+  "raw_response": "{\n  \"audience\": \"customers\",\n  \"channel\": \"status_page\",\n  \"subject\": \"Investigating monitoring alerts for vikrantsingh.fyi\",\n  \"body\": \"We are aware of repeated failures in our scheduled heartbeat checks for vikrantsingh.fyi and are actively investigating.\\n\\nWhat is affected: monitoring of vikrantsingh.fyi. The site itself is a static site and page availability is not known to be down from this alert alone; impact to visitors appears limited at this time.\\n\\nWe are triaging the issue and will share more as we learn it. We do not yet have a confirmed fix timeline and will update this status when we have clearer information.\",\n  \"tone\": \"plain language, calm\",\n  \"confidence\": 0.72,\n  \"expected_resolution_window\": null\n}",
+  "parsed_ok": true,
+  "parsed_output": {
+    "audience": "customers",
+    "channel": "status_page",
+    "subject": "Investigating monitoring alerts for vikrantsingh.fyi",
+    "body": "We are aware of repeated failures in our scheduled heartbeat checks for vikrantsingh.fyi and are actively investigating.\n\nWhat is affected: monitoring of vikrantsingh.fyi. The site itself is a static site and page availability is not known to be down from this alert alone; impact to visitors appears limited at this time.\n\nWe are triaging the issue and will share more as we learn it. We do not yet have a confirmed fix timeline and will update this status when we have clearer information.",
+    "tone": "plain language, calm",
+    "expected_resolution_window": null,
+    "confidence": 0.72
+  },
+  "error": null,
+  "confidence": 0.72
+}

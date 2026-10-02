@@ -1,0 +1,6 @@
+{
+  "monitor": "vikrantsingh.fyi heartbeat",
+  "service": "vikrantsingh.fyi",
+  "message": "Scheduled job failed 2 runs in a row: injected 503 (github) (game day: github_5xx)",
+  "fired_at": "2026-10-02T04:50:32.412Z"
+}

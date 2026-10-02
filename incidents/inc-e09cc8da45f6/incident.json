@@ -1,0 +1,854 @@
+{
+  "id": "inc-e09cc8da45f6",
+  "title": "vikrantsingh.fyi heartbeat: Scheduled job failed 2 runs in a row: injected 503 (github) (game day: github_5xx)",
+  "current_state": "TRIAGING",
+  "created_at": "2026-10-02T04:50:49.561111Z",
+  "updated_at": "2026-10-02T04:51:46.671000Z",
+  "priority": null,
+  "impact_score": null,
+  "reporter": "alert:vikrantsingh.fyi heartbeat",
+  "source": "alert",
+  "affected_services": [
+    "vikrantsingh.fyi"
+  ],
+  "affected_ci_ids": [
+    "CI-SITE-001",
+    "CI-SITE-002",
+    "CI-SITE-003",
+    "CI-SITE-004"
+  ],
+  "cmdb_snapshot": {
+    "primary_ci_id": "CI-SITE-001",
+    "matched": [
+      {
+        "ci_id": "CI-SITE-001",
+        "name": "vikrantsingh.fyi",
+        "type": "Website",
+        "environment": "Production",
+        "status": "Operational",
+        "criticality": "Medium",
+        "owner_team": "Application",
+        "technical_contact": "Vikrant Singh",
+        "depends_on": [
+          "CI-SITE-002"
+        ],
+        "details": {
+          "url": "https://vikrantsingh.fyi",
+          "note": "Personal site. Pages are static and degrade open: a heartbeat failure never takes pages down."
+        }
+      }
+    ],
+    "dependencies": [
+      {
+        "ci_id": "CI-SITE-002",
+        "name": "site-heartbeat",
+        "type": "ScheduledJob",
+        "environment": "Production",
+        "status": "Operational",
+        "criticality": "Medium",
+        "owner_team": "Reliability",
+        "technical_contact": "Vikrant Singh",
+        "depends_on": [
+          "CI-SITE-003",
+          "CI-SITE-004"
+        ],
+        "details": {
+          "schedule": "every 10 minutes (Cloudflare Cron Trigger)",
+          "runbook_hint": "GitHub 5xx or timeouts on this job = external dependency: check githubstatus.com before suspecting a regression. 401 = token expired. The snapshot absorbs two missed runs; the outside probe pages after 35 minutes stale."
+        }
+      }
+    ],
+    "dependencies_indirect": [
+      {
+        "ci_id": "CI-SITE-003",
+        "name": "github-api",
+        "type": "ExternalDependency",
+        "environment": "Production",
+        "status": "Operational",
+        "criticality": "Medium",
+        "owner_team": "Reliability",
+        "technical_contact": "Vikrant Singh",
+        "depends_on": [],
+        "details": {
+          "provider": "GitHub",
+          "status_page": "https://www.githubstatus.com"
+        }
+      },
+      {
+        "ci_id": "CI-SITE-004",
+        "name": "cloudflare-kv",
+        "type": "KeyValueStore",
+        "environment": "Production",
+        "status": "Operational",
+        "criticality": "Medium",
+        "owner_team": "Platform",
+        "technical_contact": "Vikrant Singh",
+        "depends_on": [],
+        "details": {
+          "provider": "Cloudflare Workers KV",
+          "status_page": "https://www.cloudflarestatus.com"
+        }
+      }
+    ],
+    "used_by": [],
+    "affected_ci_ids": [
+      "CI-SITE-001",
+      "CI-SITE-002",
+      "CI-SITE-003",
+      "CI-SITE-004"
+    ],
+    "routing_hint": "Application"
+  },
+  "related_incidents": [],
+  "recent_changes": [],
+  "timeline": [
+    {
+      "id": "evt-aa2f8f9d0e6b",
+      "timestamp": "2026-10-02T04:50:49.561111Z",
+      "actor": "service:vikrantsingh.fyi-heartbeat",
+      "event_type": "incident_created",
+      "from_state": null,
+      "to_state": "DETECTED",
+      "reasoning": "incident created from alert",
+      "confidence": null,
+      "artifacts": [
+        "raw_inputs/intake.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "id": "inc-e09cc8da45f6",
+        "title": "vikrantsingh.fyi heartbeat: Scheduled job failed 2 runs in a row: injected 503 (github) (game day: github_5xx)",
+        "current_state": "DETECTED",
+        "created_at": "2026-10-02T04:50:49.561111Z",
+        "updated_at": "2026-10-02T04:50:49.561111Z",
+        "priority": null,
+        "impact_score": null,
+        "reporter": "alert:vikrantsingh.fyi heartbeat",
+        "source": "alert",
+        "affected_services": [
+          "vikrantsingh.fyi"
+        ],
+        "affected_ci_ids": [
+          "CI-SITE-001",
+          "CI-SITE-002",
+          "CI-SITE-003",
+          "CI-SITE-004"
+        ],
+        "cmdb_snapshot": {
+          "primary_ci_id": "CI-SITE-001",
+          "matched": [
+            {
+              "ci_id": "CI-SITE-001",
+              "name": "vikrantsingh.fyi",
+              "type": "Website",
+              "environment": "Production",
+              "status": "Operational",
+              "criticality": "Medium",
+              "owner_team": "Application",
+              "technical_contact": "Vikrant Singh",
+              "depends_on": [
+                "CI-SITE-002"
+              ],
+              "details": {
+                "url": "https://vikrantsingh.fyi",
+                "note": "Personal site. Pages are static and degrade open: a heartbeat failure never takes pages down."
+              }
+            }
+          ],
+          "dependencies": [
+            {
+              "ci_id": "CI-SITE-002",
+              "name": "site-heartbeat",
+              "type": "ScheduledJob",
+              "environment": "Production",
+              "status": "Operational",
+              "criticality": "Medium",
+              "owner_team": "Reliability",
+              "technical_contact": "Vikrant Singh",
+              "depends_on": [
+                "CI-SITE-003",
+                "CI-SITE-004"
+              ],
+              "details": {
+                "schedule": "every 10 minutes (Cloudflare Cron Trigger)",
+                "runbook_hint": "GitHub 5xx or timeouts on this job = external dependency: check githubstatus.com before suspecting a regression. 401 = token expired. The snapshot absorbs two missed runs; the outside probe pages after 35 minutes stale."
+              }
+            }
+          ],
+          "dependencies_indirect": [
+            {
+              "ci_id": "CI-SITE-003",
+              "name": "github-api",
+              "type": "ExternalDependency",
+              "environment": "Production",
+              "status": "Operational",
+              "criticality": "Medium",
+              "owner_team": "Reliability",
+              "technical_contact": "Vikrant Singh",
+              "depends_on": [],
+              "details": {
+                "provider": "GitHub",
+                "status_page": "https://www.githubstatus.com"
+              }
+            },
+            {
+              "ci_id": "CI-SITE-004",
+              "name": "cloudflare-kv",
+              "type": "KeyValueStore",
+              "environment": "Production",
+              "status": "Operational",
+              "criticality": "Medium",
+              "owner_team": "Platform",
+              "technical_contact": "Vikrant Singh",
+              "depends_on": [],
+              "details": {
+                "provider": "Cloudflare Workers KV",
+                "status_page": "https://www.cloudflarestatus.com"
+              }
+            }
+          ],
+          "used_by": [],
+          "affected_ci_ids": [
+            "CI-SITE-001",
+            "CI-SITE-002",
+            "CI-SITE-003",
+            "CI-SITE-004"
+          ],
+          "routing_hint": "Application"
+        },
+        "related_incidents": [],
+        "recent_changes": [],
+        "timeline": [],
+        "communications": [],
+        "detection_gaps": [],
+        "ai_triage": null,
+        "resolution_notes": null,
+        "postmortem_draft": null,
+        "assigned_to": null,
+        "support_group": "Application"
+      }
+    },
+    {
+      "id": "evt-628bf233c534",
+      "timestamp": "2026-10-02T04:50:49.564375Z",
+      "actor": "service:vikrantsingh.fyi-heartbeat",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric create_latency_ms=3",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "create_latency_ms",
+        "value": 3,
+        "labels": {}
+      }
+    },
+    {
+      "id": "evt-3dcfd3a4fcfb",
+      "timestamp": "2026-10-02T04:50:49.596349Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "state_transition",
+      "from_state": "DETECTED",
+      "to_state": "TRIAGING",
+      "reasoning": "begin AI triage",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": null
+    },
+    {
+      "id": "evt-e4012982224f",
+      "timestamp": "2026-10-02T04:50:49.597614Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric state_dwell_ms=35",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "state_dwell_ms",
+        "value": 35,
+        "labels": {
+          "state": "DETECTED"
+        }
+      }
+    },
+    {
+      "id": "evt-796e055cdd8c",
+      "timestamp": "2026-10-02T04:50:49.601906Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric time_to_triage_ms=35",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "time_to_triage_ms",
+        "value": 35,
+        "labels": {}
+      }
+    },
+    {
+      "id": "evt-9894fe6b18f9",
+      "timestamp": "2026-10-02T04:51:01.886983Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_latency_ms=12279",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_latency_ms",
+        "value": 12279,
+        "labels": {
+          "purpose": "triage"
+        }
+      }
+    },
+    {
+      "id": "evt-9028dff1af2a",
+      "timestamp": "2026-10-02T04:51:01.891424Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_error=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_error",
+        "value": 0,
+        "labels": {
+          "purpose": "triage"
+        }
+      }
+    },
+    {
+      "id": "evt-f17fd1c7294d",
+      "timestamp": "2026-10-02T04:51:01.894883Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_call",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "triage",
+      "confidence": 0.92,
+      "artifacts": [
+        "ai_traces/trc-a96d53f9c5d1.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "parsed_ok": true,
+        "error": null,
+        "trace_id": "trc-a96d53f9c5d1"
+      }
+    },
+    {
+      "id": "evt-55bf6f88747a",
+      "timestamp": "2026-10-02T04:51:01.901522Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_triage_proposed",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "CMDB primary CI CI-SITE-001 is a Medium-criticality personal static site that degrades open; heartbeat failure does not take pages down. Failing component is CI-SITE-002 (site-heartbeat) owned by Reliability, with injected GitHub 503 (game day) on external CI-SITE-003. used_by is empty so user impact is negligible. Open incidents are CLOSED and not duplicates. Route to Reliability as owner of the heartbeat job and GitHub dependency.",
+      "confidence": 0.92,
+      "artifacts": [
+        "ai_traces/trc-a96d53f9c5d1.json"
+      ],
+      "requires_approval": true,
+      "approved_by": null,
+      "payload": {
+        "triage": {
+          "priority": "Low",
+          "impact_score": 15,
+          "affected_users_estimate": 0,
+          "affected_services": [
+            "vikrantsingh.fyi"
+          ],
+          "category": "Scheduled job / external dependency",
+          "routing_suggestion": "Reliability",
+          "duplicate_of": null,
+          "reasoning": "CMDB primary CI CI-SITE-001 is a Medium-criticality personal static site that degrades open; heartbeat failure does not take pages down. Failing component is CI-SITE-002 (site-heartbeat) owned by Reliability, with injected GitHub 503 (game day) on external CI-SITE-003. used_by is empty so user impact is negligible. Open incidents are CLOSED and not duplicates. Route to Reliability as owner of the heartbeat job and GitHub dependency.",
+          "confidence": 0.92
+        },
+        "requires_approval": true
+      }
+    },
+    {
+      "id": "evt-56231fb61eaa",
+      "timestamp": "2026-10-02T04:51:01.907336Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_confidence=0.92",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_confidence",
+        "value": 0.92,
+        "labels": {
+          "purpose": "triage"
+        }
+      }
+    },
+    {
+      "id": "evt-91772530d3e6",
+      "timestamp": "2026-10-02T04:51:01.912150Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric duplicate_detected=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "duplicate_detected",
+        "value": 0,
+        "labels": {}
+      }
+    },
+    {
+      "id": "evt-bfeaa9d67dfb",
+      "timestamp": "2026-10-02T04:51:09.663782Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_latency_ms=7746",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_latency_ms",
+        "value": 7746,
+        "labels": {
+          "purpose": "comms_ack_customers"
+        }
+      }
+    },
+    {
+      "id": "evt-3ff1e28ff540",
+      "timestamp": "2026-10-02T04:51:09.667887Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_error=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_error",
+        "value": 0,
+        "labels": {
+          "purpose": "comms_ack_customers"
+        }
+      }
+    },
+    {
+      "id": "evt-885068005738",
+      "timestamp": "2026-10-02T04:51:09.671895Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_call",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "comms_ack_customers",
+      "confidence": 0.72,
+      "artifacts": [
+        "ai_traces/trc-e9f1e5658746.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "parsed_ok": true,
+        "error": null,
+        "trace_id": "trc-e9f1e5658746"
+      }
+    },
+    {
+      "id": "evt-e5287f06c24a",
+      "timestamp": "2026-10-02T04:51:09.674955Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "communication_drafted",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "ack draft for customers",
+      "confidence": 0.72,
+      "artifacts": [
+        "ai_traces/trc-e9f1e5658746.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "kind": "ack",
+        "draft": {
+          "audience": "customers",
+          "channel": "status_page",
+          "subject": "Investigating monitoring alerts for vikrantsingh.fyi",
+          "body": "We are aware of repeated failures in our scheduled heartbeat checks for vikrantsingh.fyi and are actively investigating.\n\nWhat is affected: monitoring of vikrantsingh.fyi. The site itself is a static site and page availability is not known to be down from this alert alone; impact to visitors appears limited at this time.\n\nWe are triaging the issue and will share more as we learn it. We do not yet have a confirmed fix timeline and will update this status when we have clearer information.",
+          "tone": "plain language, calm",
+          "expected_resolution_window": null,
+          "confidence": 0.72
+        },
+        "sent": false
+      }
+    },
+    {
+      "id": "evt-5297af1d0197",
+      "timestamp": "2026-10-02T04:51:09.678353Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric time_to_first_ack_draft_ms=20117",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "time_to_first_ack_draft_ms",
+        "value": 20117,
+        "labels": {
+          "audience": "customers"
+        }
+      }
+    },
+    {
+      "id": "evt-d3e5016c8737",
+      "timestamp": "2026-10-02T04:51:22.600634Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_latency_ms=12917",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_latency_ms",
+        "value": 12917,
+        "labels": {
+          "purpose": "comms_status_internal"
+        }
+      }
+    },
+    {
+      "id": "evt-bc2e5501923a",
+      "timestamp": "2026-10-02T04:51:22.605064Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_error=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_error",
+        "value": 0,
+        "labels": {
+          "purpose": "comms_status_internal"
+        }
+      }
+    },
+    {
+      "id": "evt-a0445e1f68d7",
+      "timestamp": "2026-10-02T04:51:22.608240Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_call",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "comms_status_internal",
+      "confidence": 0.82,
+      "artifacts": [
+        "ai_traces/trc-8c2f919a5dd8.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "parsed_ok": true,
+        "error": null,
+        "trace_id": "trc-8c2f919a5dd8"
+      }
+    },
+    {
+      "id": "evt-beb5b986a29e",
+      "timestamp": "2026-10-02T04:51:22.619412Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "communication_drafted",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "status draft for internal",
+      "confidence": 0.82,
+      "artifacts": [
+        "ai_traces/trc-8c2f919a5dd8.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "kind": "status",
+        "draft": {
+          "audience": "internal",
+          "channel": "slack",
+          "subject": "vikrantsingh.fyi heartbeat: 2 consecutive failures — TRIAGING",
+          "body": "Status: TRIAGING\n\nWhat we know:\n- Scheduled heartbeat job for vikrantsingh.fyi failed 2 runs in a row.\n- Incident title/context flags injected GitHub 503 (game day: github_5xx).\n- Affected service: vikrantsingh.fyi. CIs in scope: CI-SITE-001 (site), CI-SITE-002 (site-heartbeat), CI-SITE-003 (GitHub dep), CI-SITE-004.\n- Primary CI is a medium-criticality personal static site; heartbeat failure does not take pages down. used_by is empty — user impact assessed as negligible.\n- Failing component called out: CI-SITE-002 (site-heartbeat), Reliability-owned. External dependency: CI-SITE-003 (GitHub).\n- No open duplicate incidents; prior related items are CLOSED.\n- Routing: Application → Reliability (heartbeat job + GitHub dependency owner).\n\nWhat we are doing:\n- Holding in TRIAGING with Reliability as owner.\n- Confirming heartbeat job health and GitHub dependency behavior against the reported 503 signal.\n- Tracking impact as degradation of monitoring only unless new signals appear.\n\nWhat is still unknown:\n- Full failure mode details beyond consecutive heartbeat failures and the reported GitHub 503/game-day flag.\n- Whether recovery is automatic on next successful run or needs manual intervention.\n- Any secondary effects on CI-SITE-004 or other dependents (none reported so far).\n\nNo root cause asserted in this update. Draft only — not sent.",
+          "tone": "direct, operational, no marketing",
+          "expected_resolution_window": null,
+          "confidence": 0.82
+        },
+        "sent": false
+      }
+    },
+    {
+      "id": "evt-d7c57cc21e34",
+      "timestamp": "2026-10-02T04:51:46.616599Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_latency_ms=23992",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_latency_ms",
+        "value": 23992,
+        "labels": {
+          "purpose": "detection_gaps_triage"
+        }
+      }
+    },
+    {
+      "id": "evt-114e24d4b196",
+      "timestamp": "2026-10-02T04:51:46.621305Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric ai_call_error=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "ai_call_error",
+        "value": 0,
+        "labels": {
+          "purpose": "detection_gaps_triage"
+        }
+      }
+    },
+    {
+      "id": "evt-d0c698b4e493",
+      "timestamp": "2026-10-02T04:51:46.652420Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "ai_call",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "detection_gaps_triage",
+      "confidence": 0.84,
+      "artifacts": [
+        "ai_traces/trc-62d35a1b23f0.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "parsed_ok": true,
+        "error": null,
+        "trace_id": "trc-62d35a1b23f0"
+      }
+    },
+    {
+      "id": "evt-02036b8bd3d6",
+      "timestamp": "2026-10-02T04:51:46.656562Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "detection_gaps_proposed",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "proposed 3 detection gap(s)",
+      "confidence": 0.84,
+      "artifacts": [
+        "ai_traces/trc-62d35a1b23f0.json"
+      ],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "gaps": [
+          {
+            "gap_description": "No independent monitor on GitHub API / githubstatus.com; GitHub 5xx is only detected after the site-heartbeat job itself fails consecutive runs.",
+            "evidence": "Alert title is 'Scheduled job failed 2 runs in a row: injected 503 (github) (game day: github_5xx)'. CI-SITE-003 (github-api) lists status_page https://www.githubstatus.com but the firing signal is only the heartbeat consecutive-failure path, not a direct external-dependency health check.",
+            "suggested_monitoring_or_runbook_change": "Add a lightweight monitor that polls GitHub status (githubstatus.com component or API health) on a shorter interval than the 10-minute cron and opens a Low/Medium alert on elevated 5xx so Reliability is notified before two heartbeat failures accumulate.",
+            "severity": "Medium",
+            "discovered_during": "triage",
+            "status": "proposed"
+          },
+          {
+            "gap_description": "Heartbeat alert waits for two consecutive missed runs (~20 minutes) while the outside probe only pages after 35 minutes stale, delaying detection of known external 5xx.",
+            "evidence": "Title states failed 2 runs in a row; CI-SITE-002 details say schedule every 10 minutes, 'The snapshot absorbs two missed runs; the outside probe pages after 35 minutes stale,' and runbook_hint already classifies GitHub 5xx as external dependency.",
+            "suggested_monitoring_or_runbook_change": "For heartbeat failures whose error class is GitHub 5xx/timeout, emit an alert on the first failed run (do not wait for the two-run absorb window) and keep the two-run threshold only for unknown/non-classified errors.",
+            "severity": "Medium",
+            "discovered_during": "triage",
+            "status": "proposed"
+          },
+          {
+            "gap_description": "Runbook guidance to check githubstatus.com on GitHub 5xx exists only as a CMDB runbook_hint on the job CI and is not auto-attached to the firing alert during triage.",
+            "evidence": "CI-SITE-002 details include runbook_hint 'GitHub 5xx or timeouts on this job = external dependency: check githubstatus.com before suspecting a regression' while incident state is TRIAGING with routing to Reliability and no indication an actionable runbook was linked on the alert.",
+            "suggested_monitoring_or_runbook_change": "Bind the site-heartbeat consecutive-failure alert to a short runbook step that auto-surfaces when the failure reason contains GitHub 5xx: open githubstatus.com, confirm external 5xx, and suppress app-regression investigation unless status is green.",
+            "severity": "Low",
+            "discovered_during": "triage",
+            "status": "proposed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "evt-1023db82caa9",
+      "timestamp": "2026-10-02T04:51:46.663252Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric detection_gap_count=0",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "detection_gap_count",
+        "value": 0,
+        "labels": {
+          "severity": "High"
+        }
+      }
+    },
+    {
+      "id": "evt-c347e07e3abe",
+      "timestamp": "2026-10-02T04:51:46.667313Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric detection_gap_count=2",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "detection_gap_count",
+        "value": 2,
+        "labels": {
+          "severity": "Medium"
+        }
+      }
+    },
+    {
+      "id": "evt-d77ca1e971aa",
+      "timestamp": "2026-10-02T04:51:46.671000Z",
+      "actor": "ai:grok:grok-4.5",
+      "event_type": "metric",
+      "from_state": null,
+      "to_state": null,
+      "reasoning": "metric detection_gap_count=1",
+      "confidence": null,
+      "artifacts": [],
+      "requires_approval": false,
+      "approved_by": null,
+      "payload": {
+        "metric": "detection_gap_count",
+        "value": 1,
+        "labels": {
+          "severity": "Low"
+        }
+      }
+    }
+  ],
+  "communications": [
+    {
+      "audience": "customers",
+      "channel": "status_page",
+      "subject": "Investigating monitoring alerts for vikrantsingh.fyi",
+      "body": "We are aware of repeated failures in our scheduled heartbeat checks for vikrantsingh.fyi and are actively investigating.\n\nWhat is affected: monitoring of vikrantsingh.fyi. The site itself is a static site and page availability is not known to be down from this alert alone; impact to visitors appears limited at this time.\n\nWe are triaging the issue and will share more as we learn it. We do not yet have a confirmed fix timeline and will update this status when we have clearer information.",
+      "tone": "plain language, calm",
+      "expected_resolution_window": null,
+      "confidence": 0.72
+    },
+    {
+      "audience": "internal",
+      "channel": "slack",
+      "subject": "vikrantsingh.fyi heartbeat: 2 consecutive failures — TRIAGING",
+      "body": "Status: TRIAGING\n\nWhat we know:\n- Scheduled heartbeat job for vikrantsingh.fyi failed 2 runs in a row.\n- Incident title/context flags injected GitHub 503 (game day: github_5xx).\n- Affected service: vikrantsingh.fyi. CIs in scope: CI-SITE-001 (site), CI-SITE-002 (site-heartbeat), CI-SITE-003 (GitHub dep), CI-SITE-004.\n- Primary CI is a medium-criticality personal static site; heartbeat failure does not take pages down. used_by is empty — user impact assessed as negligible.\n- Failing component called out: CI-SITE-002 (site-heartbeat), Reliability-owned. External dependency: CI-SITE-003 (GitHub).\n- No open duplicate incidents; prior related items are CLOSED.\n- Routing: Application → Reliability (heartbeat job + GitHub dependency owner).\n\nWhat we are doing:\n- Holding in TRIAGING with Reliability as owner.\n- Confirming heartbeat job health and GitHub dependency behavior against the reported 503 signal.\n- Tracking impact as degradation of monitoring only unless new signals appear.\n\nWhat is still unknown:\n- Full failure mode details beyond consecutive heartbeat failures and the reported GitHub 503/game-day flag.\n- Whether recovery is automatic on next successful run or needs manual intervention.\n- Any secondary effects on CI-SITE-004 or other dependents (none reported so far).\n\nNo root cause asserted in this update. Draft only — not sent.",
+      "tone": "direct, operational, no marketing",
+      "expected_resolution_window": null,
+      "confidence": 0.82
+    }
+  ],
+  "detection_gaps": [
+    {
+      "gap_description": "No independent monitor on GitHub API / githubstatus.com; GitHub 5xx is only detected after the site-heartbeat job itself fails consecutive runs.",
+      "evidence": "Alert title is 'Scheduled job failed 2 runs in a row: injected 503 (github) (game day: github_5xx)'. CI-SITE-003 (github-api) lists status_page https://www.githubstatus.com but the firing signal is only the heartbeat consecutive-failure path, not a direct external-dependency health check.",
+      "suggested_monitoring_or_runbook_change": "Add a lightweight monitor that polls GitHub status (githubstatus.com component or API health) on a shorter interval than the 10-minute cron and opens a Low/Medium alert on elevated 5xx so Reliability is notified before two heartbeat failures accumulate.",
+      "severity": "Medium",
+      "discovered_during": "triage",
+      "status": "proposed"
+    },
+    {
+      "gap_description": "Heartbeat alert waits for two consecutive missed runs (~20 minutes) while the outside probe only pages after 35 minutes stale, delaying detection of known external 5xx.",
+      "evidence": "Title states failed 2 runs in a row; CI-SITE-002 details say schedule every 10 minutes, 'The snapshot absorbs two missed runs; the outside probe pages after 35 minutes stale,' and runbook_hint already classifies GitHub 5xx as external dependency.",
+      "suggested_monitoring_or_runbook_change": "For heartbeat failures whose error class is GitHub 5xx/timeout, emit an alert on the first failed run (do not wait for the two-run absorb window) and keep the two-run threshold only for unknown/non-classified errors.",
+      "severity": "Medium",
+      "discovered_during": "triage",
+      "status": "proposed"
+    },
+    {
+      "gap_description": "Runbook guidance to check githubstatus.com on GitHub 5xx exists only as a CMDB runbook_hint on the job CI and is not auto-attached to the firing alert during triage.",
+      "evidence": "CI-SITE-002 details include runbook_hint 'GitHub 5xx or timeouts on this job = external dependency: check githubstatus.com before suspecting a regression' while incident state is TRIAGING with routing to Reliability and no indication an actionable runbook was linked on the alert.",
+      "suggested_monitoring_or_runbook_change": "Bind the site-heartbeat consecutive-failure alert to a short runbook step that auto-surfaces when the failure reason contains GitHub 5xx: open githubstatus.com, confirm external 5xx, and suppress app-regression investigation unless status is green.",
+      "severity": "Low",
+      "discovered_during": "triage",
+      "status": "proposed"
+    }
+  ],
+  "ai_triage": {
+    "priority": "Low",
+    "impact_score": 15,
+    "affected_users_estimate": 0,
+    "affected_services": [
+      "vikrantsingh.fyi"
+    ],
+    "category": "Scheduled job / external dependency",
+    "routing_suggestion": "Reliability",
+    "duplicate_of": null,
+    "reasoning": "CMDB primary CI CI-SITE-001 is a Medium-criticality personal static site that degrades open; heartbeat failure does not take pages down. Failing component is CI-SITE-002 (site-heartbeat) owned by Reliability, with injected GitHub 503 (game day) on external CI-SITE-003. used_by is empty so user impact is negligible. Open incidents are CLOSED and not duplicates. Route to Reliability as owner of the heartbeat job and GitHub dependency.",
+    "confidence": 0.92
+  },
+  "resolution_notes": null,
+  "postmortem_draft": null,
+  "assigned_to": null,
+  "support_group": "Application"
+}

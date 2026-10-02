@@ -1,7 +1,88 @@
 {
-  "generated_at": "2026-10-01T20:29:24+00:00",
+  "generated_at": "2026-10-02T04:51:48+00:00",
   "repo": "vikiscoding/vikrant_perswebsite_incidents_aiengine",
   "incidents": [
+    {
+      "id": "inc-e09cc8da45f6",
+      "title": "vikrantsingh.fyi heartbeat: Scheduled job failed 2 runs in a row: injected 503 (github) (game day: github_5xx)",
+      "state": "TRIAGING",
+      "priority": null,
+      "created_at": "2026-10-02T04:50:49+00:00",
+      "updated_at": "2026-10-02T04:51:46+00:00",
+      "triage": {
+        "priority": "Low",
+        "confidence": 0.92,
+        "reasoning": "CMDB primary CI CI-SITE-001 is a Medium-criticality personal static site that degrades open; heartbeat failure does not take pages down. Failing component is CI-SITE-002 (site-heartbeat) owned by Reliability, with injected GitHub 503 (game day) on external CI-SITE-003. used_by is"
+      },
+      "gate": "awaiting human",
+      "note": null,
+      "drafts_unsent": 2,
+      "gaps": 3,
+      "recovered_at": null,
+      "issue_url": "https://github.com/vikiscoding/vikrant_perswebsite_incidents_aiengine/issues/3",
+      "timeline": [
+        {
+          "at": "2026-10-02T04:50:49+00:00",
+          "kind": "service",
+          "event": "incident_created",
+          "to": "DETECTED"
+        },
+        {
+          "at": "2026-10-02T04:50:49+00:00",
+          "kind": "ai",
+          "event": "state_transition",
+          "to": "TRIAGING"
+        },
+        {
+          "at": "2026-10-02T04:51:01+00:00",
+          "kind": "ai",
+          "event": "ai_call",
+          "to": null
+        },
+        {
+          "at": "2026-10-02T04:51:01+00:00",
+          "kind": "ai",
+          "event": "ai_triage_proposed",
+          "to": null
+        },
+        {
+          "at": "2026-10-02T04:51:09+00:00",
+          "kind": "ai",
+          "event": "ai_call",
+          "to": null
+        },
+        {
+          "at": "2026-10-02T04:51:09+00:00",
+          "kind": "ai",
+          "event": "communication_drafted",
+          "to": null
+        },
+        {
+          "at": "2026-10-02T04:51:22+00:00",
+          "kind": "ai",
+          "event": "ai_call",
+          "to": null
+        },
+        {
+          "at": "2026-10-02T04:51:22+00:00",
+          "kind": "ai",
+          "event": "communication_drafted",
+          "to": null
+        },
+        {
+          "at": "2026-10-02T04:51:46+00:00",
+          "kind": "ai",
+          "event": "ai_call",
+          "to": null
+        },
+        {
+          "at": "2026-10-02T04:51:46+00:00",
+          "kind": "ai",
+          "event": "detection_gaps_proposed",
+          "to": null
+        }
+      ]
+    },
     {
       "id": "inc-d063a8dbabcf",
       "title": "manual test: Grok key test: scheduled job failed 2 runs in a row: http 503 (github) (not a real outage)",
