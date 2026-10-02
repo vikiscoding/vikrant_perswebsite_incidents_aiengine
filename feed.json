@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-10-02T05:18:14+00:00",
+  "generated_at": "2026-10-02T05:20:13+00:00",
   "repo": "vikiscoding/vikrant_perswebsite_incidents_aiengine",
   "incidents": [
     {
       "id": "inc-e09cc8da45f6",
       "title": "vikrantsingh.fyi heartbeat: Scheduled job failed 2 runs in a row: injected 503 (github) (game day: github_5xx)",
-      "state": "ACTIVE",
+      "state": "RESOLVED",
       "priority": "Low",
       "created_at": "2026-10-02T04:50:49+00:00",
-      "updated_at": "2026-10-02T05:18:11+00:00",
+      "updated_at": "2026-10-02T05:20:12+00:00",
       "triage": {
         "priority": "Low",
         "confidence": 0.92,
@@ -26,12 +26,6 @@
           "kind": "service",
           "event": "incident_created",
           "to": "DETECTED"
-        },
-        {
-          "at": "2026-10-02T04:51:01+00:00",
-          "kind": "ai",
-          "event": "ai_call",
-          "to": null
         },
         {
           "at": "2026-10-02T04:51:01+00:00",
@@ -92,6 +86,12 @@
           "kind": "human",
           "event": "state_transition",
           "to": "ACTIVE"
+        },
+        {
+          "at": "2026-10-02T05:20:12+00:00",
+          "kind": "human",
+          "event": "state_transition",
+          "to": "RESOLVED"
         }
       ]
     },
