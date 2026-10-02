@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-10-02T05:10:46+00:00",
+  "generated_at": "2026-10-02T05:15:48+00:00",
   "repo": "vikiscoding/vikrant_perswebsite_incidents_aiengine",
   "incidents": [
     {
       "id": "inc-e09cc8da45f6",
       "title": "vikrantsingh.fyi heartbeat: Scheduled job failed 2 runs in a row: injected 503 (github) (game day: github_5xx)",
       "state": "TRIAGING",
-      "priority": null,
+      "priority": "Low",
       "created_at": "2026-10-02T04:50:49+00:00",
-      "updated_at": "2026-10-02T04:51:46+00:00",
+      "updated_at": "2026-10-02T05:15:44+00:00",
       "triage": {
         "priority": "Low",
         "confidence": 0.92,
         "reasoning": "CMDB primary CI CI-SITE-001 is a Medium-criticality personal static site that degrades open; heartbeat failure does not take pages down. Failing component is CI-SITE-002 (site-heartbeat) owned by Reliability, with injected GitHub 503 (game day) on external CI-SITE-003. used_by is"
       },
-      "gate": "awaiting human",
+      "gate": "approved by human",
       "note": null,
       "drafts_unsent": 2,
       "gaps": 3,
@@ -79,6 +79,12 @@
           "at": "2026-10-02T04:51:46+00:00",
           "kind": "ai",
           "event": "detection_gaps_proposed",
+          "to": null
+        },
+        {
+          "at": "2026-10-02T05:15:44+00:00",
+          "kind": "human",
+          "event": "triage_applied",
           "to": null
         }
       ]
