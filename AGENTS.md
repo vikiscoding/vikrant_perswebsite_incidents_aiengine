@@ -6,7 +6,7 @@
 
 **Today:** a working incident record and triage agent for one operator, live on one small site. Build toward the aim one verified slice at a time; never describe the aim as if it were shipped.
 
-The system owns the single source of truth for every incident, drives the full lifecycle (Detection → Identification → Triage → Investigation → Mitigation → Resolution → Closure + Continuous Learning), automates the maximum possible cognitive load and coordination work using Grok, and keeps humans in clear authority on high-stakes decisions.
+The system owns the single source of truth for every incident, drives the full lifecycle (Detection → Identification → Triage → Investigation → Mitigation → Resolution → Closure + Continuous Learning), takes coordination and record-keeping work off people, with Grok proposing and people deciding, and keeps humans in clear authority on every decision that matters.
 
 It should keep a complete record of every incident, flag detection gaps as the incident unfolds, and close the feedback loops that usually break in human-only processes (alert fatigue, lost context, late or missing postmortems, knowledge staying in people’s heads).
 

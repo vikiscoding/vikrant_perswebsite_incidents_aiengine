@@ -1,26 +1,24 @@
 # Incident-AI
 
-> **Live:** this repo runs the incident desk behind [vikrantsingh.fyi](https://vikrantsingh.fyi/reliability/): real site alerts, AI-proposed triage, human-gated lifecycle in GitHub Issues. See [SITE_BRIDGE.md](SITE_BRIDGE.md). Imported fresh from `itsm-incident-mgmt-agent@895b805` (code only, no incident data).
+The live incident desk behind [vikrantsingh.fyi](https://vikrantsingh.fyi/reliability/#incident-desk). Real site alerts come in, a model proposes a priority and drafts an update, and a person makes every decision after intake. It is a working incident record for one operator, not a production system, and the model's live quality is not yet certified.
 
-An incident triage agent with a human gate. An alert comes in and is stored as a folder that *is* the ticket; the model proposes priority, routing and draft updates; a person decides every step that matters; and every model call is traced. If the model is down, the ticket still exists and a person finishes the job.
+Each alert is stored as a folder that *is* the ticket, and every model call is traced. If the model is down, the ticket still exists and a person finishes the job. Paging never depends on the model: it comes from an outside probe on the site's SLO. How the desk is wired: [SITE_BRIDGE.md](SITE_BRIDGE.md). Imported fresh from `itsm-incident-mgmt-agent@895b805` (code only, no incident data).
 
-Today it is a working incident record for one operator, not a production incident platform. It handles the real alerts of one small site ([live](https://vikrantsingh.fyi/reliability/#incident-desk)), and on that live desk the model never sets priority on its own: every proposal waits for a human `/approve`. Paging never depends on the model; it comes from an outside probe on the site's SLO.
-
-## Current Focus: Phase 1 — The Verifiable Incident Brain
+## Phase 1: a verifiable incident record
 
 We are deliberately **not** building a full multi-agent swarm on day one.
 
 **Phase 1** builds the trustworthy foundation:
 
 - A clean, auditable state machine that owns the complete incident lifecycle as the single source of truth
-- Grok-powered intelligent ingestion and triage (noise reduction, real impact assessment, routing, duplicate detection)
-- Automated communication drafting with appropriate tone and expectations
+- Grok-proposed ingestion and triage (noise, impact, routing, duplicates), schema-validated before anything uses it
+- Drafted updates for people to send; nothing is sent by the model
 - Continuous detection gap analysis that improves as the incident evolves
 - Full verifiability — every AI decision is traceable, explainable, and replayable
 - **Zero trust** on inputs and model outputs (schema validation, human gates on high impact)
 - **Structured logging & metrics** so improvement data and future performance dashboards do not require re-instrumentation
 
-This foundation directly attacks the worst cross-cutting problems in traditional incident processes before we layer on more sophisticated investigation or automation capabilities.
+It aims at the cross-cutting problems below, and nothing more ambitious is built until this part holds up on real incidents.
 
 ### Core docs
 
@@ -46,7 +44,7 @@ Traditional incident management (even when "ITIL aligned") consistently fails at
 - **Zero systematic learning** — Postmortems are rare, detection gaps are ignored, knowledge evaporates
 - **Cognitive load and burnout** — On-call engineers spend most of their time on coordination and reconstruction instead of problem-solving
 
-Our system is designed to make these failure modes structurally difficult.
+The design aims to make these failure modes harder to fall into.
 
 ## Architecture & Principles
 
@@ -56,7 +54,7 @@ Our system is designed to make these failure modes structurally difficult.
 - **Zero trust**: Untrusted inputs and AI proposals; verify with schemas, policies, and human gates
 - **Verifiability First**: Every AI action produces auditable traces
 - **Ample logging**: Events, AI traces, structured metrics for later dashboards (UI deferred)
-- **Human Authority + AI Agency**: AI proposes and executes low-risk work under policy; humans retain final authority on high-impact decisions
+- **People decide, the model proposes**: a person makes every decision after intake. Auto-apply (Low and Medium priority at confidence ≥ 0.8) exists in the code, but it has been off on the live desk since 1 Oct 2026 (`TRIAGE_AUTO_APPLY=off`): there, every AI priority waits for `/approve`
 - **Evaluation is Sacred**: Progress is measured through structured rubrics on historical + synthetic incidents, not demos
 - **Simplicity**: No speculative agent frameworks. The code must remain readable by a senior engineer in minutes
 

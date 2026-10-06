@@ -10,7 +10,7 @@
 ## Purpose
 
 We do **not** invent a meta-“flywheel system” for this project.  
-We **do** borrow three hard disciplines from first-principles engineering and apply them directly to an AI-native incident OS:
+We **do** borrow three hard disciplines from first-principles engineering and apply them directly to this incident system:
 
 1. **First principles** — start from irreducible facts of incident work, not process theater or agent fashion.  
 2. **Zero trust** — never trust AI, inputs, or implicit authority; verify, constrain, and gate by blast radius.  
