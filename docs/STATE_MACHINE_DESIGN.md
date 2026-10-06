@@ -51,7 +51,7 @@ The default table below is the Phase 1 profile. A company overrides it in `compa
 - AI can **always** propose a transition with full reasoning trace and confidence — proposals are **untrusted** until policy accepts them.
 - High-impact transitions (Critical priority, moving to CLOSED, major external communications) **fail closed** without explicit human approval (`approved_by` set).
 - Low-risk / high-confidence actions (enriching context, drafting initial ack, logging detection gaps) may auto-apply only when policy allows **and** a full audit event is written.
-- Auto-apply (`Low`/`Medium` + `confidence ≥ 0.8`) skips **human wait**, not the Grok call, and not High/Critical / CLOSED / bounce / typed confirm. Blast radius is not graduated from a streak of being right.
+- Auto-apply (`Low`/`Medium` + `confidence ≥ 0.8`; off on the live desk, `TRIAGE_AUTO_APPLY=off`) skips **human wait**, not the Grok call, and not High/Critical / CLOSED / bounce / typed confirm. Blast radius is not graduated from a streak of being right.
 - Illegal transitions are rejected by code; they never appear as half-written state.
 
 ## Core Data Model (Pydantic — Source of Truth)

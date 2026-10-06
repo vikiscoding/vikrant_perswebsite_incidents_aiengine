@@ -72,7 +72,7 @@ Verifiable state machine + SSOT + ingest + gated Grok triage + draft comms + det
 ### Next (before Phase 2)
 
 1. Live eval: `python eval_harness.py --live` and keep the summary.
-2. Calibrate Low/Medium auto-apply (`0.8` today) from that batch — or leave it and say why.
+2. Calibrate Low/Medium auto-apply (`0.8` today) from that batch, or leave it and say why. This applies to the engine run on its own; the live desk behind vikrantsingh.fyi runs with `TRIAGE_AUTO_APPLY=off`, so no AI priority applies there without `/approve` ([SITE_BRIDGE.md](SITE_BRIDGE.md)).
 3. Add a few historical or real incidents to `fixtures/eval/` (the live desk now produces real ones).
 4. Human rubric pass on tone / “would I want this at 3 a.m.”
 

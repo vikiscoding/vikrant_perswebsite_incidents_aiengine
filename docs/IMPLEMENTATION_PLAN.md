@@ -42,7 +42,7 @@ First principles, zero trust, and telemetry-ready logging are **constraints on e
 | Exit review | Slice 11 done — see `PHASE1_EXIT.md`. Scripted floors pass; live quality not certified |
 | Operator stitch | Slice 12 done — `cli.py propose` + `show` prints draft bodies and gaps |
 | Handoff failsafe | Done 2026-08-15 — typed `--confirm` on human transition; `assign` / `release` / `route` events |
-| Auto-apply | Shipped: Low/Medium + `confidence ≥ 0.8`. Cutoff **provisional** until live eval. Saves human wait, not API calls. High/Critical always gated. |
+| Auto-apply | Shipped: Low/Medium + `confidence ≥ 0.8`. Cutoff **provisional** until live eval. Saves human wait, not API calls. High/Critical always gated. **Off on the live desk** (`TRIAGE_AUTO_APPLY=off`, since 1 Oct 2026): there every AI priority waits for `/approve`. |
 | Cost / determinism policy | **Rejected as a product.** Sounder version is what already shipped. After `--live` only: calibrate `0.8`; then optional physics cuts (idempotent `propose`, duplicate attach). No thermostat. |
 | Production incident path | Phase 1 foundation signed off with residual gaps. Phase 2 not started |
 
